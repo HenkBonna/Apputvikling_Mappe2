@@ -78,7 +78,7 @@ public class DBHandler extends SQLiteOpenHelper {
         ContentValues values = new ContentValues();
         values.put(KEY_NAME, restaurant.getName());
         values.put(KEY_PH_NO, restaurant.getPhone());
-        int endret = db.update(TABLE_RESTAURANTS, values, KEY_ID + "= ?", new String[] {String.valueOf(kontakt.get_ID())});
+        int endret = db.update(TABLE_RESTAURANTS, values, KEY_ID + "= ?", new String[] {String.valueOf(restaurant.get_ID())});
         db.close();
         return endret;
     }
