@@ -11,7 +11,7 @@ import android.view.View;
 import java.util.ArrayList;
 import java.util.List;
 
-public class DBHandler {
+public class DBHandler extends SQLiteOpenHelper{
     static String TABLE_RESTAURANTER = "Restauranter";
     static String KEY_ID = "_ID";
     static String KEY_NAME = "Navn";
@@ -77,7 +77,7 @@ public class DBHandler {
         ContentValues values = new ContentValues();
         values.put(KEY_NAME, restaurant.getNavn());
         values.put(KEY_PH_NO, restaurant.getTelefon());
-        int endret = db.update(TABLE_RESTAURANTER, values, KEY_ID + "= ?", new String[] {String.valueOf(kontakt.get_ID())});
+        int endret = db.update(TABLE_RESTAURANTER, values, KEY_ID + "= ?", new String[] {String.valueOf(restaurant.get_ID())});
         db.close();
         return endret;
     }
