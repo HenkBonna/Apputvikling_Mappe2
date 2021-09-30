@@ -2,9 +2,11 @@ package com.example.mappe2_s344104_s344045;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
@@ -12,28 +14,66 @@ import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
-    EditText name_in;
-    EditText phone_in; //This performance was phoned in el-oh-el-eks-dee
-    EditText address_in;
-    EditText type_in;
-    EditText id_in;
-    TextView print;
-    DBHandler db;
+    private Button settings;
+    private Button reservations;
+    private Button makeReservation;
+    private Button restaurants;
+    private Button add_restaurant;
+    private Button friends;
+    private Button add_friend;
+    private DBHandler db;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        name_in = (EditText) findViewById(R.id.name);
-        phone_in = (EditText) findViewById(R.id.phone);
-        address_in = findViewById(R.id.address);
-        type_in = findViewById(R.id.type);
-        id_in = (EditText) findViewById(R.id.my_id);
-        print = (TextView) findViewById(R.id.print);
+        settings = findViewById(R.id.settings);
+        reservations = findViewById(R.id.reservations);
+        makeReservation = findViewById(R.id.make_reservation);
+        restaurants = findViewById(R.id.restaurants);
+        add_restaurant = findViewById(R.id.add_restaurant);
+        friends = findViewById(R.id.friends);
+        add_friend = findViewById(R.id.add_friend);
         db = new DBHandler(this);
     }
 
+    public void settings(View view) {
+        Intent i = new Intent(view.getContext(), Settings.class);
+        startActivity(i);
+    }
+
+    public void see_reservations(View view) {
+        Intent i = new Intent(view.getContext(), ListReservations.class);
+        startActivity(i);
+    }
+
+    public void see_restaurants(View view) {
+        Intent i = new Intent(view.getContext(), ListRestaurants.class);
+        startActivity(i);
+    }
+
+    public void add_restaurant(View view) {
+        Intent i = new Intent(view.getContext(), RegisterRestaurant.class);
+        startActivity(i);
+    }
+
+    public void make_reservation(View view) {
+        Intent i = new Intent(view.getContext(), AddReservation.class);
+        startActivity(i);
+    }
+
+    public void see_friends(View view) {
+        Intent i = new Intent(view.getContext(), ListFriends.class);
+        startActivity(i);
+    }
+
+    public void add_friend(View view) {
+        Intent i = new Intent(view.getContext(), RegisterFriend.class);
+        startActivity(i);
+    }
+
+    /*
     public void add(View v){
         Restaurant restaurant = new Restaurant (name_in.getText().toString(), phone_in.getText().toString());
         db.leggTilRestaurant(restaurant);
@@ -63,4 +103,6 @@ public class MainActivity extends AppCompatActivity {
         restaurant.set_ID(Long.parseLong(id_in.getText().toString()));
         db.oppdaterRestaurant(restaurant);
     }
+    */
+
 }
