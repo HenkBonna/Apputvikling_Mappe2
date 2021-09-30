@@ -12,10 +12,12 @@ import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
-    EditText navninn;
-    EditText telefoninn;
-    EditText idinn;
-    TextView utskrift;
+    EditText name_in;
+    EditText phone_in; //This performance was phoned in el-oh-el-eks-dee
+    EditText address_in;
+    EditText type_in;
+    EditText id_in;
+    TextView print;
     DBHandler db;
 
     @Override
@@ -23,40 +25,42 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        navninn = (EditText) findViewById(R.id.navn);
-        telefoninn = (EditText) findViewById(R.id.telefon);
-        idinn = (EditText) findViewById(R.id.min_id);
-        utskrift = (TextView) findViewById(R.id.utskrift);
+        name_in = (EditText) findViewById(R.id.name);
+        phone_in = (EditText) findViewById(R.id.phone);
+        address_in = findViewById(R.id.address);
+        type_in = findViewById(R.id.type);
+        id_in = (EditText) findViewById(R.id.my_id);
+        print = (TextView) findViewById(R.id.print);
         db = new DBHandler(this);
     }
 
-    public void leggtil(View v){
-        Restaurant restaurant = new Restaurant (navninn.getText().toString(), telefoninn.getText().toString());
+    public void add(View v){
+        Restaurant restaurant = new Restaurant (name_in.getText().toString(), phone_in.getText().toString());
         db.leggTilRestaurant(restaurant);
         Log.d("Legg inn: ", "legger til restauranter");
 
     }
-    public void visalle(View v){
+    public void show_all(View v){
         String tekst = "";
         List<Restaurant> restauranter = db.finnAlleRestauranter();
 
         for (Restaurant restaurant : restauranter){
             tekst = tekst + "Id: " + restaurant.get_ID() + ",Navn: "
-                    + restaurant.getNavn() + ",Telefon: " +restaurant.getTelefon();
+                    + restaurant.getName() + ",Telefon: " +restaurant.getPhone();
             Log.d("Navn: ", tekst);
         }
-        utskrift.setText(tekst);
+        print.setText(tekst);
 
     }
-    public void slett(View v){
-        Long restaurantid = (Long.parseLong(idinn.getText().toString()));
+    public void delete(View v){
+        Long restaurantid = (Long.parseLong(id_in.getText().toString()));
         db.slettRestaurant(restaurantid);
     }
-    public void oppdater(View v){
+    public void update(View v){
         Restaurant restaurant = new Restaurant();
-        restaurant.setNavn(navninn.getText().toString());
-        restaurant.setTelefon(telefoninn.getText().toString());
-        restaurant.set_ID(Long.parseLong(idinn.getText().toString()));
+        restaurant.setName(name_in.getText().toString());
+        restaurant.setPhone(phone_in.getText().toString());
+        restaurant.set_ID(Long.parseLong(id_in.getText().toString()));
         db.oppdaterRestaurant(restaurant);
     }
 }

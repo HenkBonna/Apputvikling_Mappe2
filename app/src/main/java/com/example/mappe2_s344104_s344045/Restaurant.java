@@ -1,31 +1,21 @@
 package com.example.mappe2_s344104_s344045;
 
-import androidx.appcompat.app.AppCompatActivity;
-
-import android.os.Bundle;
-import android.util.Log;
-import android.view.View;
-import android.widget.EditText;
-import android.widget.TextView;
-
-import java.util.List;
-
 public class Restaurant {
     private Long _ID;
-    private String Navn;
-    private String Telefon;
+    private String name;
+    private String phone;
 
     public Restaurant (){}
 
     public Restaurant(String navn, String telefon) {
-        Navn = navn;
-        Telefon = telefon;
+        name = navn;
+        phone = telefon;
     }
 
     public Restaurant(Long _ID, String navn, String telefon) {
         this._ID = _ID;
-        Navn = navn;
-        Telefon = telefon;
+        name = navn;
+        phone = telefon;
     }
 
     public Long get_ID() {
@@ -36,19 +26,19 @@ public class Restaurant {
         this._ID = _ID;
     }
 
-    public String getNavn() {
-        return Navn;
+    public String getName() {
+        return name;
     }
 
-    public void setNavn(String navn) {
-        Navn = navn;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public String getTelefon() {
-        return Telefon;
+    public String getPhone() {
+        return phone;
     }
 
-    public void setTelefon(String telefon) {
-        Telefon = telefon;
+    public void setPhone(String phone) {
+        this.phone = phone;
     }
 }
