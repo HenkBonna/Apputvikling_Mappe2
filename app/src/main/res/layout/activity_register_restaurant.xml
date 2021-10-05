@@ -20,7 +20,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
-        android:id="@+id/name"
+        android:id="@+id/restaurant_name"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
@@ -31,7 +31,7 @@
         app:layout_constraintTop_toBottomOf="@+id/add_restaurant_title" />
 
     <EditText
-        android:id="@+id/address"
+        android:id="@+id/restaurant_address"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
@@ -39,10 +39,10 @@
         android:text="Adresse"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/name" />
+        app:layout_constraintTop_toBottomOf="@+id/restaurant_name" />
 
     <EditText
-        android:id="@+id/phone"
+        android:id="@+id/restaurant_phone"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
@@ -50,17 +50,17 @@
         android:text="Telefon"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/address" />
+        app:layout_constraintTop_toBottomOf="@+id/restaurant_address" />
 
     <EditText
-        android:id="@+id/type"
+        android:id="@+id/restaurant_type"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:minHeight="48dp"
         android:text="Type"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/phone" />
+        app:layout_constraintTop_toBottomOf="@+id/restaurant_phone" />
 
     <Button
         android:id="@+id/add"
@@ -72,6 +72,6 @@
         android:text="Lagre"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/type" />
+        app:layout_constraintTop_toBottomOf="@+id/restaurant_type" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
