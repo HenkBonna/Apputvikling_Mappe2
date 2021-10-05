@@ -31,10 +31,9 @@ public class ListFriends extends AppCompatActivity {
                 "Ishmael","Møbius","Cthulu","Aelia","Whappy McDoogal","Jeff","Anton",
                 "Mammy Louise"};
 
-        //ArrayAdapter adapter = new ArrayAdapter<String>(this,
-        //        R.layout.activity_list, temp);
-
-        //listView.setAdapter(adapter);
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
+                R.layout.list_item, temp);
+        listView.setAdapter(adapter);
 
 
         button.setText("Legg til ny Venn");
