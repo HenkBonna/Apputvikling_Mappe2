@@ -3,9 +3,12 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/GitHub/Apputvikling_Mappe2/app/src/main/res/layout/activity_list_friends.xml" value="0.36666666666666664" />
         <entry key="..\:/GitHub/Apputvikling_Mappe2/app/src/main/res/layout/activity_list_reservations.xml" value="0.36666666666666664" />
+        <entry key="..\:/GitHub/Apputvikling_Mappe2/app/src/main/res/layout/activity_list_restaurants.xml" value="0.36666666666666664" />
         <entry key="..\:/GitHub/Apputvikling_Mappe2/app/src/main/res/layout/activity_main.xml" value="0.36666666666666664" />
         <entry key="..\:/GitHub/Apputvikling_Mappe2/app/src/main/res/layout/activity_make_reservation.xml" value="0.36666666666666664" />
+        <entry key="..\:/GitHub/Apputvikling_Mappe2/app/src/main/res/layout/activity_register_friend.xml" value="0.36666666666666664" />
         <entry key="..\:/GitHub/Apputvikling_Mappe2/app/src/main/res/layout/activity_register_restaurant.xml" value="0.36666666666666664" />
         <entry key="..\:/GitHub/Apputvikling_Mappe2/app/src/main/res/layout/activity_settings.xml" value="0.36666666666666664" />
       </map>
