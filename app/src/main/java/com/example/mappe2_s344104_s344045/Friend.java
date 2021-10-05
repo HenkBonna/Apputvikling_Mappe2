@@ -1,9 +1,18 @@
 package com.example.mappe2_s344104_s344045;
 
+import androidx.room.ColumnInfo;
+import androidx.room.Entity;
+import androidx.room.PrimaryKey;
+
+@Entity
 public class Friend {
+    @PrimaryKey(autoGenerate = true)
     private long _ID;
+    @ColumnInfo(name = "first_name")
     private String firstname;
+    @ColumnInfo(name = "last_name")
     private String lastname;
+    @ColumnInfo(name = "phone_number")
     private String phone;
 
     //We treating our friends like objects here
