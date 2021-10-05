@@ -10,12 +10,10 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import java.util.ArrayList;
-
 public class ListRestaurants extends AppCompatActivity {
-    TextView textView;
-    ListView listView;
-    Button button;
+    private TextView textView;
+    private ListView listView;
+    private Button button;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,14 +26,12 @@ public class ListRestaurants extends AppCompatActivity {
 
         textView.setText("Restauranter");
 
-        String[] temp = {"Henrik","Sander","Randi","Emilia","Manuel","Marianne","Xavier",
-                "Ishmael","Møbius","Cthulu","Aelia","Whappy McDoogal","Jeff","Anton",
-                "Mammy Louise"};
+        String[] temp = {"Guaginos","Sanders Pizzaria","MickyD","Birgers"};
 
-        ArrayAdapter adapter = new ArrayAdapter<String>(this,
-                R.layout.activity_list, temp);
+        //ArrayAdapter adapter = new ArrayAdapter<String>(this,
+       //         R.layout.activity_list, temp);
 
-        listView.setAdapter(adapter);
+        //listView.setAdapter(adapter);
 
 
         button.setText("Legg til ny Restaurant");
