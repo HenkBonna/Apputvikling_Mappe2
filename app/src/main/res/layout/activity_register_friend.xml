@@ -26,7 +26,7 @@
         android:layout_weight="0.8"
         android:inputType="textPersonName"
         android:minHeight="48dp"
-        android:text="Fornavn"
+        android:hint="Fornavn"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/addFriendTitle" />
@@ -39,7 +39,7 @@
         android:layout_weight="0.8"
         android:inputType="textPersonName"
         android:minHeight="48dp"
-        android:text="Etternavn"
+        android:hint="Etternavn"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editFirstName" />
@@ -52,7 +52,7 @@
         android:layout_weight="0.8"
         android:inputType="phone"
         android:minHeight="48dp"
-        android:text="Telefon"
+        android:hint="Telefon"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editLastName" />

@@ -6,6 +6,7 @@ public class Friend {
     private String lastname;
     private String phone;
 
+    //We treating our friends like objects here
     public Friend() {
     }
 

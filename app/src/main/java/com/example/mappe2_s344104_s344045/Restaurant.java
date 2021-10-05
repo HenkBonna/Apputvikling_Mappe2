@@ -56,4 +56,12 @@ public class Restaurant {
     public void setPhone(String phone) {
         this.phone = phone;
     }
+
+    public Long get_ID() {
+        return _ID;
+    }
+
+    public void set_ID(Long _ID) {
+        this._ID = _ID;
+    }
 }
