@@ -28,11 +28,9 @@ public class ListRestaurants extends AppCompatActivity {
 
         String[] temp = {"Guaginos","Sanders Pizzaria","MickyD","Birgers"};
 
-        //ArrayAdapter adapter = new ArrayAdapter<String>(this,
-       //         R.layout.activity_list, temp);
-
-        //listView.setAdapter(adapter);
-
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
+                R.layout.list_item, temp);
+        listView.setAdapter(adapter);
 
         button.setText("Legg til ny Restaurant");
         button.setOnClickListener(new View.OnClickListener() {
