@@ -18,6 +18,43 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".AddReservation"
+            android:parentActivityName=".MainActivity"
+            android:launchMode="singleTop">
+
+        </activity>
+        <activity android:name=".ListFriends"
+            android:parentActivityName=".MainActivity"
+            android:launchMode="singleTop">
+
+        </activity>
+        <activity android:name=".ListReservations"
+            android:parentActivityName=".MainActivity"
+            android:launchMode="singleTop">
+
+        </activity>
+        <activity android:name=".ListRestaurants"
+            android:parentActivityName=".MainActivity"
+            android:launchMode="singleTop">
+
+        </activity>
+        <activity android:name=".RegisterFriend"
+            android:parentActivityName=".MainActivity"
+            android:launchMode="singleTop">
+
+        </activity>
+        <activity android:name=".RegisterRestaurant"
+            android:parentActivityName=".MainActivity"
+            android:launchMode="singleTop">
+
+        </activity>
+        <activity android:name=".Settings"
+            android:parentActivityName=".MainActivity"
+            android:launchMode="singleTop">
+
+        </activity>
+
+
     </application>
 
 </manifest>
