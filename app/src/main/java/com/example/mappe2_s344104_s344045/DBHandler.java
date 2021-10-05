@@ -96,10 +96,12 @@ public class DBHandler extends SQLiteOpenHelper {
     public Restaurant finnRestaurant(int id){
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor cursor = db.query(TABLE_RESTAURANTS, new String[]{
-                        KEY_ID, KEY_NAME, KEY_PH_NO}, KEY_ID + "=?",
+                        KEY_ID, KEY_NAME, KEY_ADDRESS, KEY_PH_NO, KEY_TYPE}, KEY_ID + "=?",
                 new String[]{String.valueOf(id)},null,null,null,null);
         if (cursor != null) cursor.moveToFirst();
-        Restaurant restaurant = new Restaurant(Long.parseLong(cursor.getString(0)), cursor.getString(1), cursor.getString(2));
+        Restaurant restaurant = new Restaurant(Long.parseLong(cursor.getString(0)),
+                cursor.getString(1), cursor.getString(2), cursor.getString(3),
+                cursor.getString(4));
         cursor.close();
         db.close();
         return restaurant;
