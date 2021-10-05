@@ -10,17 +10,19 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
+
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
     private Button settings;
     private Button reservations;
-    private Button makeReservation;
+    private FloatingActionButton makeReservation;
     private Button restaurants;
-    private Button add_restaurant;
+    private FloatingActionButton add_restaurant;
     private Button friends;
-    private Button add_friend;
+    private FloatingActionButton add_friend;
     private DBHandler db;
 
     @Override
