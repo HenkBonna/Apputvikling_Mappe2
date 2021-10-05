@@ -11,24 +11,27 @@
         android:orientation="vertical">
 
         <TextView
+            android:id="@+id/header"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@color/purple_700"
             android:paddingTop="20dp"
             android:paddingBottom="20dp"
-            android:text="Dine Venner"
+            android:text="Tittel"
             android:textAlignment="center"
             android:textColor="@color/white"
             android:textSize="34sp" />
 
         <ListView
-
+            android:id="@+id/listView"
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
             android:divider="@color/lightergray"
             android:dividerHeight="1dp"
             android:footerDividersEnabled="false"
-            android:headerDividersEnabled="false" />
+            android:headerDividersEnabled="false">
+
+        </ListView>
 
     </LinearLayout>
 
@@ -38,12 +41,13 @@
         android:gravity="bottom">
 
         <Button
+            android:id="@+id/button"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:backgroundTint="@color/purple_700"
             android:insetTop="0dp"
             android:insetBottom="0dp"
-            android:text="Legg til ny venn"
+            android:text="Knapp"
             app:cornerRadius="0dp" />
     </RelativeLayout>
 
