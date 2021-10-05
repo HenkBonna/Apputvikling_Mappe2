@@ -27,10 +27,11 @@ public class ListFriends extends AppCompatActivity {
 
         textView.setText("Venner");
 
+        // TODO: Replace with reading from _db
         String[] temp = {"Henrik","Sander","Randi","Emilia","Manuel","Marianne","Xavier",
                 "Ishmael","Møbius","Cthulu","Aelia","Whappy McDoogal","Jeff","Anton",
                 "Mammy Louise"};
-
+        // TODO: Look into ArrayAdapters, to create better-looking listitems: vogella.com/tutorials/AndroidListView/article.html
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
                 R.layout.list_item, temp);
         listView.setAdapter(adapter);
