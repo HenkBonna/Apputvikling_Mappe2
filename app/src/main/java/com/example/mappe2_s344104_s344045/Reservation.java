@@ -1,12 +1,22 @@
 package com.example.mappe2_s344104_s344045;
 
+import androidx.room.ColumnInfo;
+import androidx.room.Entity;
+import androidx.room.PrimaryKey;
+
 import java.util.List;
 
+@Entity
 public class Reservation {
+    @PrimaryKey(autoGenerate = true)
     private long _ID;
+    @ColumnInfo(name = "restaurant")
     private Restaurant restaurant;
+    @ColumnInfo(name = "date")
     private String date;
+    @ColumnInfo(name = "time")
     private String time;
+    @ColumnInfo(name = "friends")
     private List<Friend> friends;
 
     public Reservation() {

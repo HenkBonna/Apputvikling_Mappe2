@@ -32,6 +32,14 @@ public class Friend {
         this.phone = phone;
     }
 
+    public long get_ID() {
+        return _ID;
+    }
+
+    public void set_ID(long _ID) {
+        this._ID = _ID;
+    }
+
     public String getFirstname() {
         return firstname;
     }

@@ -1,10 +1,20 @@
 package com.example.mappe2_s344104_s344045;
 
+import androidx.room.ColumnInfo;
+import androidx.room.Entity;
+import androidx.room.PrimaryKey;
+
+@Entity
 public class Restaurant {
+    @PrimaryKey(autoGenerate = true)
     private Long _ID;
+    @ColumnInfo(name = "restaurant_name")
     private String name;
+    @ColumnInfo(name = "address")
     private String address;
+    @ColumnInfo(name = "restaurant_phone")
     private String phone;
+    @ColumnInfo(name = "restaurant_type")
     private String type;
 
     public Restaurant (){}
