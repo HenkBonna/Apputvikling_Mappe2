@@ -3,23 +3,23 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/mobile_navigation"
-    app:startDestination="@+id/navigation_home">
+    app:startDestination="@+id/navigation_reservations">
+
+    <activity
+        android:id="@+id/navigation_friends"
+        android:name="com.example.mappe2_s344104_s344045.ListFriends"
+        android:label="Venner"
+        tools:layout="@layout/new_layout" />
 
     <fragment
-        android:id="@+id/navigation_home"
-        android:name="com.example.mappe2_s344104_s344045.ui.home.HomeFragment"
-        android:label="@string/title_home"
-        tools:layout="@layout/fragment_home" />
+        android:id="@+id/navigation_reservations"
+        android:name="com.example.mappe2_s344104_s344045.ListReservations"
+        android:label="Reservasjoner"
+        tools:layout="@layout/new_layout" />
 
     <fragment
-        android:id="@+id/navigation_dashboard"
-        android:name="com.example.mappe2_s344104_s344045.ui.dashboard.DashboardFragment"
-        android:label="@string/title_dashboard"
-        tools:layout="@layout/fragment_dashboard" />
-
-    <fragment
-        android:id="@+id/navigation_notifications"
-        android:name="com.example.mappe2_s344104_s344045.ui.notifications.NotificationsFragment"
-        android:label="@string/title_notifications"
-        tools:layout="@layout/fragment_notifications" />
+        android:id="@+id/navigation_restaurants"
+        android:name="com.example.mappe2_s344104_s344045.ListRestaurants"
+        android:label="Restauranter"
+        tools:layout="@layout/new_layout" />
 </navigation>
