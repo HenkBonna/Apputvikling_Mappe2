@@ -16,9 +16,11 @@
         <entry key="app/src/main/res/layout/activity_register_friend.xml" value="0.17314814814814813" />
         <entry key="app/src/main/res/layout/activity_register_restaurant.xml" value="0.17314814814814813" />
         <entry key="app/src/main/res/layout/activity_settings.xml" value="0.11666666666666667" />
+        <entry key="app/src/main/res/layout/fragment_dashboard.xml" value="0.11574074074074074" />
+        <entry key="app/src/main/res/layout/fragment_home.xml" value="0.11574074074074074" />
         <entry key="app/src/main/res/layout/fragment_notifications.xml" value="0.23076923076923078" />
         <entry key="app/src/main/res/layout/list_item.xml" value="0.11666666666666667" />
-        <entry key="app/src/main/res/layout/new_layout.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/new_layout.xml" value="0.22" />
         <entry key="app/src/main/res/menu/bottom_nav_menu.xml" value="0.23076923076923078" />
       </map>
     </option>
