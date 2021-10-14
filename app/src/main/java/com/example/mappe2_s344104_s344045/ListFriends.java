@@ -2,6 +2,7 @@ package com.example.mappe2_s344104_s344045;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
@@ -30,6 +31,7 @@ public class ListFriends extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_list);
 
+
         textView = (TextView) findViewById(R.id.header);
         listView = (ListView) findViewById(R.id.listView);
         fab = (FloatingActionButton) findViewById(R.id.fab);
@@ -49,6 +51,22 @@ public class ListFriends extends AppCompatActivity {
         nav.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                switch (item.getTitle().toString()){
+                    case "Venner":
+                        //Intent i = new Intent(ListFriends.this, ListFriends.class);
+                        //startActivity(i);
+                        break;
+                    case "Reservasjoner":
+                        Intent i2 = new Intent(ListFriends.this, ListReservations.class);
+                        startActivity(i2);
+                        break;
+                    case "Restauranter":
+                        Intent i3 = new Intent(ListFriends.this, ListRestaurants.class);
+                        startActivity(i3);
+                        break;
+                    default:
+                        break;
+                }
                 return true;
             }
         });
@@ -60,6 +78,11 @@ public class ListFriends extends AppCompatActivity {
                 startActivity(i);
             }
         });
-
     }
+/*
+    public void gotoRestaurants(View view){
+        Intent i = new Intent(view.getContext(), ListRestaurants.class);
+        startActivity(i);
+    }
+    */
 }

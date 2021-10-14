@@ -11,13 +11,13 @@
         android:label="Venner"
         tools:layout="@layout/activity_list" />
 
-    <fragment
+    <activity
         android:id="@+id/navigation_reservations"
         android:name="com.example.mappe2_s344104_s344045.ListReservations"
         android:label="Reservasjoner"
         tools:layout="@layout/activity_list" />
 
-    <fragment
+    <activity
         android:id="@+id/navigation_restaurants"
         android:name="com.example.mappe2_s344104_s344045.ListRestaurants"
         android:label="Restauranter"
