@@ -2,18 +2,27 @@ package com.example.mappe2_s344104_s344045;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.android.material.navigation.NavigationBarView;
 
 public class ListFriends extends AppCompatActivity {
     private TextView textView;
     private ListView listView;
-    //private Button button;
+    private FloatingActionButton fab;
+    private BottomNavigationView nav;
 
 
     @Override
@@ -23,7 +32,7 @@ public class ListFriends extends AppCompatActivity {
 
         textView = (TextView) findViewById(R.id.header);
         listView = (ListView) findViewById(R.id.listView);
-        //button = (Button) findViewById(R.id.button);
+        fab = (FloatingActionButton) findViewById(R.id.fab);
 
         textView.setText("Venner");
 
@@ -36,15 +45,20 @@ public class ListFriends extends AppCompatActivity {
                 R.layout.list_item, temp);
         listView.setAdapter(adapter);
 
+        nav.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                return false;
+            }
+        });
 
-        //button.setText("Legg til ny Venn");
-        //button.setOnClickListener(new View.OnClickListener() {
-        //    @Override
-        //    public void onClick(View view) {
-        //        Intent i = new Intent(view.getContext(), RegisterFriend.class);
-        //        startActivity(i);
-        //    }
-        //});
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(view.getContext(), RegisterFriend.class);
+                startActivity(i);
+            }
+        });
 
     }
 }

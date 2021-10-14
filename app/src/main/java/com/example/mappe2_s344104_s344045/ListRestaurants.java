@@ -10,10 +10,12 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
+
 public class ListRestaurants extends AppCompatActivity {
     private TextView textView;
     private ListView listView;
-    private Button button;
+    private FloatingActionButton fab;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,7 +24,7 @@ public class ListRestaurants extends AppCompatActivity {
 
         textView = (TextView) findViewById(R.id.header);
         listView = (ListView) findViewById(R.id.listView);
-        button = (Button) findViewById(R.id.button);
+        fab = (FloatingActionButton) findViewById(R.id.fab);
 
         textView.setText("Restauranter");
 
@@ -32,8 +34,7 @@ public class ListRestaurants extends AppCompatActivity {
                 R.layout.list_item, temp);
         listView.setAdapter(adapter);
 
-        button.setText("Legg til ny Restaurant");
-        button.setOnClickListener(new View.OnClickListener() {
+        fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent i = new Intent(view.getContext(), RegisterRestaurant.class);

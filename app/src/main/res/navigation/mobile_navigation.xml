@@ -9,17 +9,17 @@
         android:id="@+id/navigation_friends"
         android:name="com.example.mappe2_s344104_s344045.ListFriends"
         android:label="Venner"
-        tools:layout="@layout/new_layout" />
+        tools:layout="@layout/activity_list" />
 
     <fragment
         android:id="@+id/navigation_reservations"
         android:name="com.example.mappe2_s344104_s344045.ListReservations"
         android:label="Reservasjoner"
-        tools:layout="@layout/new_layout" />
+        tools:layout="@layout/activity_list" />
 
     <fragment
         android:id="@+id/navigation_restaurants"
         android:name="com.example.mappe2_s344104_s344045.ListRestaurants"
         android:label="Restauranter"
-        tools:layout="@layout/new_layout" />
+        tools:layout="@layout/activity_list" />
 </navigation>
