@@ -13,7 +13,7 @@ import androidx.appcompat.app.AppCompatActivity;
 public class ListFriends extends AppCompatActivity {
     private TextView textView;
     private ListView listView;
-    private Button button;
+    //private Button button;
 
 
     @Override
@@ -23,7 +23,7 @@ public class ListFriends extends AppCompatActivity {
 
         textView = (TextView) findViewById(R.id.header);
         listView = (ListView) findViewById(R.id.listView);
-        button = (Button) findViewById(R.id.button);
+        //button = (Button) findViewById(R.id.button);
 
         textView.setText("Venner");
 
@@ -37,14 +37,14 @@ public class ListFriends extends AppCompatActivity {
         listView.setAdapter(adapter);
 
 
-        button.setText("Legg til ny Venn");
-        button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent i = new Intent(view.getContext(), RegisterFriend.class);
-                startActivity(i);
-            }
-        });
+        //button.setText("Legg til ny Venn");
+        //button.setOnClickListener(new View.OnClickListener() {
+        //    @Override
+        //    public void onClick(View view) {
+        //        Intent i = new Intent(view.getContext(), RegisterFriend.class);
+        //        startActivity(i);
+        //    }
+        //});
 
     }
 }
