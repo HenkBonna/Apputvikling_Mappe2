@@ -3,6 +3,7 @@ package com.example.mappe2_s344104_s344045;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -24,6 +25,10 @@ public class MainActivity extends AppCompatActivity {
     private Button friends;
     private FloatingActionButton add_friend;
     private DBHandler db;
+    public final static String PREFS = "PrefsFile";
+
+    private SharedPreferences settingsPref;
+    private SharedPreferences.Editor editor;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,6 +43,11 @@ public class MainActivity extends AppCompatActivity {
         friends = findViewById(R.id.friends);
         add_friend = findViewById(R.id.add_friend);
         db = new DBHandler(this);
+
+        settingsPref = getSharedPreferences(PREFS, MODE_PRIVATE);
+        editor = settingsPref.edit();
+
+        startService(new Intent(this, MyService.class));
     }
 
     public void settings(View view) {

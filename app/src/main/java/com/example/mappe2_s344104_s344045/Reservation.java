@@ -7,15 +7,20 @@ import androidx.room.TypeConverters;
 
 @Entity
 public class Reservation {
+
     @PrimaryKey(autoGenerate = true)
     private long _ID;
+
     @ColumnInfo(name = "restaurant")
     @TypeConverters(RestaurantConverter.class)
     private Restaurant restaurant;
+
     @ColumnInfo(name = "date")
     private String date;
+
     @ColumnInfo(name = "time")
     private String time;
+
     @ColumnInfo(name = "friends")
     @TypeConverters(FriendConverter.class)
     private FriendsList friends;
