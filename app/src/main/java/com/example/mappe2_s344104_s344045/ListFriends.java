@@ -33,6 +33,7 @@ public class ListFriends extends AppCompatActivity {
         textView = (TextView) findViewById(R.id.header);
         listView = (ListView) findViewById(R.id.listView);
         fab = (FloatingActionButton) findViewById(R.id.fab);
+        nav = (BottomNavigationView) findViewById(R.id.nav_view);
 
         textView.setText("Venner");
 
@@ -48,7 +49,7 @@ public class ListFriends extends AppCompatActivity {
         nav.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                return false;
+                return true;
             }
         });
 
