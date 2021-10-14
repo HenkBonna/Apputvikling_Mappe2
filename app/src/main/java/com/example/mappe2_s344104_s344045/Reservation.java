@@ -3,38 +3,47 @@ package com.example.mappe2_s344104_s344045;
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
-
-import java.util.List;
+import androidx.room.TypeConverters;
 
 @Entity
 public class Reservation {
     @PrimaryKey(autoGenerate = true)
     private long _ID;
     @ColumnInfo(name = "restaurant")
+    @TypeConverters(RestaurantConverter.class)
     private Restaurant restaurant;
     @ColumnInfo(name = "date")
     private String date;
     @ColumnInfo(name = "time")
     private String time;
     @ColumnInfo(name = "friends")
-    private List<Friend> friends;
+    @TypeConverters(FriendConverter.class)
+    private FriendsList friends;
 
     public Reservation() {
     }
 
-    public Reservation(Restaurant restaurant, String date, String time, List<Friend> friends) {
+    public Reservation(Restaurant restaurant, String date, String time, FriendsList friends) {
         this.restaurant = restaurant;
         this.date = date;
         this.time = time;
         this.friends = friends;
     }
 
-    public Reservation(long _ID, Restaurant restaurant, String date, String time, List<Friend> friends) {
+    public Reservation(long _ID, Restaurant restaurant, String date, String time, FriendsList friends) {
         this._ID = _ID;
         this.restaurant = restaurant;
         this.date = date;
         this.time = time;
         this.friends = friends;
+    }
+
+    public long get_ID() {
+        return _ID;
+    }
+
+    public void set_ID(long _ID) {
+        this._ID = _ID;
     }
 
     public Restaurant getRestaurant() {
@@ -61,11 +70,11 @@ public class Reservation {
         this.time = time;
     }
 
-    public List<Friend> getFriends() {
+    public FriendsList getFriends() {
         return friends;
     }
 
-    public void setFriends(List<Friend> friends) {
+    public void setFriends(FriendsList friends) {
         this.friends = friends;
     }
 }

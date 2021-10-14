@@ -13,7 +13,7 @@ import java.util.List;
 public class AddReservation extends AppCompatActivity {
     private Spinner restaurants;
     private Spinner friendsSpinner;
-    private List<Friend> friendList;
+    private FriendsList friendList;
     private EditText date;
     private EditText time;
 
@@ -26,7 +26,7 @@ public class AddReservation extends AppCompatActivity {
         friendsSpinner = findViewById(R.id.spinner_friends);
         date = findViewById(R.id.editTextDate);
         time = findViewById(R.id.editTextTime);
-        friendList = new ArrayList<>();
+        friendList = new FriendsList();
         //TODO fill spinners with restaurants and friends
     }
 

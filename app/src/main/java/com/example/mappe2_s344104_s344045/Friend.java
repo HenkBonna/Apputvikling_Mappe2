@@ -25,7 +25,7 @@ public class Friend {
         this.phone = phone;
     }
 
-    public Friend(int _ID, String firstname, String lastname, String phone) {
+    public Friend(long _ID, String firstname, String lastname, String phone) {
         this._ID = _ID;
         this.firstname = firstname;
         this.lastname = lastname;
