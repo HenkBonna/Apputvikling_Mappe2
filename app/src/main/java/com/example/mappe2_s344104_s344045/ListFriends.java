@@ -53,6 +53,7 @@ public class ListFriends extends AppCompatActivity {
         nav.setSelectedItemId(R.id.navigation_friends);
 
         if (!findABetterWayOfCheckingThis) {
+            /*
             saveFriend("Espen", "Askeladden", "12345678");
             saveFriend("Per", "Askeladden", "12543678");
             saveFriend("Pål", "Askeladden", "12365678");
@@ -64,6 +65,7 @@ public class ListFriends extends AppCompatActivity {
             saveFriend("Ali", "Farka", "11111111");
             saveFriend("Ahmad", "Jamal", "73735356");
             saveFriend("Gerard", "Schwarz", "35353535");
+            */
             showFriends();
             findABetterWayOfCheckingThis = true;
         }
