@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.TableLayout;
 import android.widget.TextView;
@@ -22,7 +23,7 @@ public class ListReservations extends AppCompatActivity {
     private ListView listView;
     private FloatingActionButton fab;
     private BottomNavigationView nav;
-
+    private ImageButton imgBtn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,8 +35,9 @@ public class ListReservations extends AppCompatActivity {
         listView = (ListView) findViewById(R.id.listView);
         fab = (FloatingActionButton) findViewById(R.id.fab);
         nav = (BottomNavigationView) findViewById(R.id.nav_view);
+        imgBtn = (ImageButton) findViewById(R.id.settings_btn);
 
-        textView.setText("Dine Reservasjoner");
+        textView.setText("Reservasjoner");
 
         // TODO: Replace with reading from _db
         // FILL with Tables
@@ -76,6 +78,13 @@ public class ListReservations extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent i = new Intent(view.getContext(), RegisterFriend.class);
+                startActivity(i);
+            }
+        });
+        imgBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(view.getContext(), Settings.class);
                 startActivity(i);
             }
         });

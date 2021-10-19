@@ -1,11 +1,13 @@
 package com.example.mappe2_s344104_s344045;
 
 import android.content.Intent;
+import android.media.Image;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -21,6 +23,8 @@ public class ListRestaurants extends AppCompatActivity {
     private ListView listView;
     private FloatingActionButton fab;
     private BottomNavigationView nav;
+    private ImageButton imgBtn;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,6 +35,7 @@ public class ListRestaurants extends AppCompatActivity {
         listView = (ListView) findViewById(R.id.listView);
         fab = (FloatingActionButton) findViewById(R.id.fab);
         nav = (BottomNavigationView) findViewById(R.id.nav_view);
+        imgBtn = (ImageButton) findViewById(R.id.settings_btn);
 
         textView.setText("Restauranter");
 
@@ -71,6 +76,13 @@ public class ListRestaurants extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent i = new Intent(view.getContext(), RegisterRestaurant.class);
+                startActivity(i);
+            }
+        });
+        imgBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(view.getContext(), Settings.class);
                 startActivity(i);
             }
         });
