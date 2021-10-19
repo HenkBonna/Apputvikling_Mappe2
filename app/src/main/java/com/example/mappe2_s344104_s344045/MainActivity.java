@@ -36,6 +36,7 @@ public class MainActivity extends AppCompatActivity {
     private SharedPreferences settingsPref;
     private SharedPreferences.Editor editor;
 
+    /*
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -112,6 +113,7 @@ public class MainActivity extends AppCompatActivity {
         Intent i = new Intent(view.getContext(), RegisterFriend.class);
         startActivity(i);
     }
+    */
 
     /*
     public void add(View v){

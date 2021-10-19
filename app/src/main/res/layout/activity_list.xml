@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     android:orientation="vertical">
@@ -10,17 +11,32 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
 
-        <TextView
-            android:id="@+id/header"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@android:color/holo_blue_dark"
-            android:paddingTop="20dp"
-            android:paddingBottom="20dp"
-            android:text="Tittel"
-            android:textAlignment="center"
-            android:textColor="@color/white"
-            android:textSize="34sp" />
+        <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="80dp">
+
+            <TextView
+                android:id="@+id/header"
+                android:layout_width="match_parent"
+                android:layout_height="fill_parent"
+                android:background="@android:color/holo_blue_dark"
+                android:gravity="center"
+                android:text="Tittel"
+                android:textAlignment="center"
+                android:textColor="@color/white"
+                android:textSize="34sp" />
+
+            <ImageButton
+                android:id="@+id/settings_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="fill_parent"
+                android:layout_marginStart="12dp"
+                android:background="@android:color/transparent"
+                android:scaleType="centerInside"
+                android:src="@drawable/ic_baseline_settings_48" />
+
+        </RelativeLayout>
+
 
         <ListView
             android:id="@+id/listView"
@@ -51,6 +67,7 @@
             android:layout_marginBottom="16dp"
             android:backgroundTint="@android:color/holo_blue_bright"
             android:contentDescription="Add New"
+            app:tint="@color/nearblack"
             app:maxImageSize="48dp"
             app:srcCompat="@drawable/ic_baseline_add_32" />
 
