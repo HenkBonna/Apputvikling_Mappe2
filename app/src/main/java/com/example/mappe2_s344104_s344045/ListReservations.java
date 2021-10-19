@@ -1,6 +1,7 @@
 package com.example.mappe2_s344104_s344045;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
@@ -25,10 +26,21 @@ public class ListReservations extends AppCompatActivity {
     private BottomNavigationView nav;
     private ImageButton imgBtn;
 
+    private DBHandler db;
+    public final static String PREFS = "PrefsFile";
+
+    private SharedPreferences settingsPref;
+    private SharedPreferences.Editor editor;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_list);
+
+        db = new DBHandler(this);
+        settingsPref = getSharedPreferences(PREFS, MODE_PRIVATE);
+        editor = settingsPref.edit();
+        startService(new Intent(this, MyService.class));
 
 
         textView = (TextView) findViewById(R.id.header);
