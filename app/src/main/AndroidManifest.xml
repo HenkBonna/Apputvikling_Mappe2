@@ -51,11 +51,16 @@
             android:launchMode="singleTop">
 
         </activity>
+
         <service android:name="com.example.mappe2_s344104_s344045.PeriodicService"/>
+
         <service android:name="com.example.mappe2_s344104_s344045.MyService"/>
-        <receiver android:name=".MyBroadcastReceiver" android:exported="true">
+
+        <receiver android:name=".MyBroadcastReceiver" android:exported="true" android:enabled="true"
+            android:permission="android.permission.SEND_SMS">
             <intent-filter>
-                <action android:name="com.example.mappe2_s344103_s344045.my_broadcast"/>
+                <action android:name="MY_BROADCAST"/>
+                <action android:name="android.intent.action.BOOT_COMPLETED"/>
             </intent-filter>
         </receiver>
 

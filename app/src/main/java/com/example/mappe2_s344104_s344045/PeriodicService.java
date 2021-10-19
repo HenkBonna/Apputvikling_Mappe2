@@ -69,18 +69,20 @@ public class PeriodicService extends Service {
         }
     }
     public static void startAlarm() {
-        Calendar cal = Calendar.getInstance();
-        cal.set(Calendar.HOUR_OF_DAY, (int) prefHour);
-        cal.set(Calendar.MINUTE, (int) prefMinute);
-        cal.set(Calendar.SECOND, 0);
-        cal.set(Calendar.MILLISECOND, 0);
+        if (alarmManager != null) {
+            Calendar cal = Calendar.getInstance();
+            cal.set(Calendar.HOUR_OF_DAY, (int) prefHour);
+            cal.set(Calendar.MINUTE, (int) prefMinute);
+            cal.set(Calendar.SECOND, 0);
+            cal.set(Calendar.MILLISECOND, 0);
 
-        long millisPerDay = 24*60*60*1000;
-        Log.e("Alarm start", "" + cal.getTime());
-        if (cal.getTimeInMillis() < System.currentTimeMillis()) {
-            cal.set(Calendar.DAY_OF_MONTH, cal.get(Calendar.DAY_OF_MONTH) + 1);
-            Log.e("New alarm start", "" + cal.getTime());
+            long millisPerDay = 24 * 60 * 60 * 1000;
+            Log.e("Alarm start", "" + cal.getTime());
+            if (cal.getTimeInMillis() < System.currentTimeMillis()) {
+                cal.set(Calendar.DAY_OF_MONTH, cal.get(Calendar.DAY_OF_MONTH) + 1);
+                Log.e("New alarm start", "" + cal.getTime());
+            }
+            alarmManager.setInexactRepeating(AlarmManager.RTC_WAKEUP, cal.getTimeInMillis(), AlarmManager.INTERVAL_DAY, pi);
         }
-        alarmManager.setInexactRepeating(AlarmManager.RTC_WAKEUP, cal.getTimeInMillis(), AlarmManager.INTERVAL_DAY, pi);
     }
 }

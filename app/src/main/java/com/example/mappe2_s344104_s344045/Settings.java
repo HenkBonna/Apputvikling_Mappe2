@@ -131,7 +131,7 @@ public class Settings extends AppCompatActivity {
     }
     public void sendBroadcast(){
         Intent intent = new Intent();
-        intent.setAction("com.example.mappe2_s344103_s344045.mybroadcast");
+        intent.setAction("MY_BROADCAST");
         sendBroadcast(intent);
     }
     private void cancelAlarm() {

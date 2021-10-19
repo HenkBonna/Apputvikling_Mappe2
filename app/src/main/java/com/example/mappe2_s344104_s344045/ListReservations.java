@@ -1,7 +1,12 @@
 package com.example.mappe2_s344104_s344045;
 
+import android.Manifest;
+import android.content.BroadcastReceiver;
+import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.content.SharedPreferences;
+import android.content.pm.PackageManager;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.MenuItem;
@@ -15,6 +20,8 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
+import androidx.room.ColumnInfo;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -46,7 +53,7 @@ public class ListReservations extends AppCompatActivity {
         db = new DBHandler(this);
         settingsPref = getSharedPreferences(PREFS, MODE_PRIVATE);
         editor = settingsPref.edit();
-        startService(new Intent(this, MyService.class));
+        //startService(new Intent(this, MyService.class));
 
 
         textView = (TextView) findViewById(R.id.header);
@@ -106,6 +113,30 @@ public class ListReservations extends AppCompatActivity {
                 startActivity(i);
             }
         });
+
+        if (ActivityCompat.checkSelfPermission(this, android.Manifest.permission.SEND_SMS) != PackageManager.PERMISSION_GRANTED) {
+            ActivityCompat.requestPermissions(this, new String[]{android.Manifest.permission.SEND_SMS}, 1);
+        } else {
+            Toast.makeText(this, "Sending broadcast", Toast.LENGTH_SHORT).show();
+            Intent intent = new Intent();
+            intent.setAction("MY_BROADCAST");
+            sendBroadcast(intent, Manifest.permission.SEND_SMS);
+        }
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+
+        if (ActivityCompat.checkSelfPermission(this, android.Manifest.permission.SEND_SMS)
+                == PackageManager.PERMISSION_GRANTED) {
+            Intent intent = new Intent();
+            intent.setAction("MY_BROADCAST");
+            sendBroadcast(intent, Manifest.permission.SEND_SMS);
+        } else {
+            Toast.makeText(this, "Appen har ikke tilgang til å sende SMS",
+                    Toast.LENGTH_LONG).show();
+        }
     }
 
     /*
