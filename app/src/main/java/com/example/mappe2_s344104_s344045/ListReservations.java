@@ -33,6 +33,8 @@ public class ListReservations extends AppCompatActivity {
     private DBHandler db;
     public final static String PREFS = "PrefsFile";
 
+    ArrayAdapter<String> adapter;
+
     private SharedPreferences settingsPref;
     private SharedPreferences.Editor editor;
 
@@ -59,13 +61,28 @@ public class ListReservations extends AppCompatActivity {
         // FILL with Tables
         //String[] temp = {"Reservasjon 1","Reservasjon 2"};
         // TODO: Look into ArrayAdapters, to create better-looking listitems: vogella.com/tutorials/AndroidListView/article.html
-        //ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
-        //        R.layout.list_item, temp);
-        //listView.setAdapter(adapter);
 
+
+
+        // TODO: IMPORTANT!!!!!!!!!! I've implemented the DB methods for friend here, as it seemed easiest. FIX THIS
+
+        saveFriend("Espen","Askeladden","12345678");
+        saveFriend("Per","Askeladden","12543678");
+        saveFriend("Pål","Askeladden","12365678");
+        saveFriend("Marina","Diamandis","22345678");
+        saveFriend("Djivan","Gasparyan","25252525");
+        saveFriend("Babatunde","Olatunji","47474747");
+        saveFriend("Annie","Clark","15151515");
+        saveFriend("Philip","Glass","35353535");
+        saveFriend("Ali","Farka","11111111");
+        saveFriend("Ahmad","Jamal","73735356");
+        saveFriend("Gerard","Schwarz","35353535");
+
+        showFriends();
 
 
         nav.setSelectedItemId(R.id.navigation_reservations);
+
         nav.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
@@ -95,10 +112,10 @@ public class ListReservations extends AppCompatActivity {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                saveFriend();
-                showFriends();
-                //Intent i = new Intent(view.getContext(), RegisterFriend.class); //TODO: Undo this thingy
-                //startActivity(i);
+                //saveFriend();
+                //showFriends();
+                Intent i = new Intent(view.getContext(), RegisterFriend.class); //TODO: Undo this thingy
+                startActivity(i);
             }
         });
         imgBtn.setOnClickListener(new View.OnClickListener() {
@@ -111,10 +128,10 @@ public class ListReservations extends AppCompatActivity {
     }
 
     // TODO: Move SaveFriend to RegisterFriend class
-    private void saveFriend(){
-        final String fname = "Espen";
-        final String lname = "Ekeberg";
-        final String phone = "42 069 217";
+    private void saveFriend(String fname_in, String lname_in, String phone_in){
+        final String fname = fname_in;
+        final String lname = lname_in;
+        final String phone = phone_in;
 
         class SaveFriend extends AsyncTask<Void, Void, Void>{
             @Override
@@ -153,16 +170,35 @@ public class ListReservations extends AppCompatActivity {
             protected void onPostExecute(List<Friend> allFriends){
                 super.onPostExecute(allFriends);
                 Toast.makeText(getApplicationContext(), "Shown", Toast.LENGTH_LONG).show();
+
+                // REDUNDANT //////
                 String out="";
                 for (Friend f : allFriends){
                     out = f.getFirstname() + " " + f.getLastname() + " (" + f.getPhone() + ")";
                 }
-                textView.setText(out);
+                //textView.setText(out);
                 System.out.println("RESULTAT: "+ out);
+                //////////////////
+                displayFriends(allFriends);
             }
         }
         ShowFriends sf = new ShowFriends();
         sf.execute();
+    }
+
+    public void displayFriends(List<Friend> friendList){
+
+        String[] temp = new String[friendList.size()];
+        int i = 0;
+        for (Friend f : friendList){
+            String tempString = f.getFirstname() + " " + f.getLastname() + " (" + f.getPhone() + ")";
+            temp[i] = tempString;
+            i++;
+        }
+
+        adapter = new ArrayAdapter<String>(this,
+                R.layout.list_item, temp);
+        listView.setAdapter(adapter);
     }
 
     /*
