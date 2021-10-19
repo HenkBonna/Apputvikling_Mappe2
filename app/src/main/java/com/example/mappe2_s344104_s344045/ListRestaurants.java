@@ -40,6 +40,7 @@ public class ListRestaurants extends AppCompatActivity {
                 R.layout.list_item, temp);
         listView.setAdapter(adapter);
 
+        nav.setSelectedItemId(R.id.navigation_restaurants);
         nav.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
@@ -47,14 +48,17 @@ public class ListRestaurants extends AppCompatActivity {
                     case "Venner":
                         Intent i = new Intent(ListRestaurants.this, ListFriends.class);
                         startActivity(i);
+                        finish();
                         break;
                     case "Reservasjoner":
                         Intent i2 = new Intent(ListRestaurants.this, ListReservations.class);
                         startActivity(i2);
+                        finish();
                         break;
                     case "Restauranter":
                         //Intent i3 = new Intent(ListFriends.this, ListRestaurants.class);
                         //startActivity(i3);
+                        //finish();
                         break;
                     default:
                         break;

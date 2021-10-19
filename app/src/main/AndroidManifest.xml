@@ -12,7 +12,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Mappe2">
         <activity
-            android:name=".MainActivity"
+            android:name=".ListReservations"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -21,37 +21,33 @@
             </intent-filter>
         </activity>
         <activity android:name=".AddReservation"
-            android:parentActivityName=".MainActivity"
+            android:parentActivityName=".ListReservations"
             android:launchMode="singleTop">
 
         </activity>
         <activity android:name=".ListFriends"
-            android:parentActivityName=".MainActivity"
+            android:parentActivityName=".ListReservations"
             android:launchMode="singleTop">
 
         </activity>
-        <activity android:name=".ListReservations"
-            android:parentActivityName=".MainActivity"
-            android:launchMode="singleTop">
 
-        </activity>
         <activity android:name=".ListRestaurants"
-            android:parentActivityName=".MainActivity"
+            android:parentActivityName=".ListReservations"
             android:launchMode="singleTop">
 
         </activity>
         <activity android:name=".RegisterFriend"
-            android:parentActivityName=".MainActivity"
+            android:parentActivityName=".ListReservations"
             android:launchMode="singleTop">
 
         </activity>
         <activity android:name=".RegisterRestaurant"
-            android:parentActivityName=".MainActivity"
+            android:parentActivityName=".ListReservations"
             android:launchMode="singleTop">
 
         </activity>
         <activity android:name=".Settings"
-            android:parentActivityName=".MainActivity"
+            android:parentActivityName=".ListReservations"
             android:launchMode="singleTop">
 
         </activity>
