@@ -22,7 +22,7 @@
         android:id="@+id/sms_switch"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="8dp"
         android:minHeight="48dp"
         android:text="Send SMS"
         android:textSize="20sp"
@@ -36,22 +36,44 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:timePickerMode="spinner"
-        app:layout_constraintEnd_toEndOf="@+id/textView6"
-        app:layout_constraintStart_toStartOf="@+id/textView6"
-        app:layout_constraintTop_toBottomOf="@+id/textView6" />
+        app:layout_constraintEnd_toEndOf="@+id/messageTime"
+        app:layout_constraintStart_toStartOf="@+id/messageTime"
+        app:layout_constraintTop_toBottomOf="@+id/messageTime" />
 
     <TextView
-        android:id="@+id/textView6"
+        android:id="@+id/messageTime"
         android:layout_width="0dp"
         android:layout_height="48dp"
-        android:layout_marginTop="24dp"
-        android:text="Meldingstid"
+        android:layout_marginTop="16dp"
         android:gravity="center"
-        android:textSize="20sp"
+        android:text="Meldingstid"
         android:textColor="@color/black"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="@+id/messageTextStandard"
+        app:layout_constraintStart_toStartOf="@+id/messageTextStandard"
+        app:layout_constraintTop_toBottomOf="@+id/messageTextStandard"
+        app:layout_constraintWidth_percent="0.7" />
+
+    <EditText
+        android:id="@+id/messageTextStandard"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:minHeight="48dp"
         app:layout_constraintEnd_toEndOf="@+id/sms_switch"
         app:layout_constraintStart_toStartOf="@+id/sms_switch"
         app:layout_constraintTop_toBottomOf="@+id/sms_switch"
-        app:layout_constraintWidth_percent="0.7" />
+        tools:ignore="SpeakableTextPresentCheck" />
+
+    <TextView
+        android:id="@+id/msgTextLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Meldingstekst"
+        android:textColor="@color/black"
+        app:layout_constraintBottom_toTopOf="@+id/messageTextStandard"
+        app:layout_constraintStart_toStartOf="@+id/messageTextStandard" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

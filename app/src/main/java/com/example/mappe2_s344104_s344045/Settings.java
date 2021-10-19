@@ -2,9 +2,12 @@ package com.example.mappe2_s344104_s344045;
 
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.View;
 import android.widget.CompoundButton;
+import android.widget.EditText;
 import android.widget.Switch;
 import android.widget.TimePicker;
 
@@ -17,6 +20,7 @@ public class Settings extends AppCompatActivity {
     private SharedPreferences settings;
     private TimePicker tp;
     private Switch notif, sms;
+    private EditText messageTxt;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,9 +32,29 @@ public class Settings extends AppCompatActivity {
         editor = settings.edit();
         notif = findViewById(R.id.notif_switch);
         sms = findViewById(R.id.sms_switch);
-
+        messageTxt = findViewById(R.id.messageTextStandard);
         sms.setChecked(settings.getBoolean("sms_enabled", false));
         notif.setChecked(settings.getBoolean("notification_enabled", false));
+
+        if (!settings.contains("standard_message")){
+            Log.e("PREFERENCE ADDED", "Preference added");
+            editor.putString("standard_message", "Husk reservasjon i kveld!");
+        }
+        messageTxt.setText(settings.getString("standard_message", null));
+
+        messageTxt.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) { }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) { }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+                editor.putString("standard_message", editable.toString());
+                editor.apply();
+            }
+        });
 
         TimePicker.OnTimeChangedListener onTimeChangedListener = new TimePicker.OnTimeChangedListener() {
             @Override
