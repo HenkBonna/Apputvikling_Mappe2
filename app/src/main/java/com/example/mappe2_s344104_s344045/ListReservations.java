@@ -62,25 +62,6 @@ public class ListReservations extends AppCompatActivity {
         //String[] temp = {"Reservasjon 1","Reservasjon 2"};
         // TODO: Look into ArrayAdapters, to create better-looking listitems: vogella.com/tutorials/AndroidListView/article.html
 
-
-
-        // TODO: IMPORTANT!!!!!!!!!! I've implemented the DB methods for friend here, as it seemed easiest. FIX THIS
-
-        saveFriend("Espen","Askeladden","12345678");
-        saveFriend("Per","Askeladden","12543678");
-        saveFriend("Pål","Askeladden","12365678");
-        saveFriend("Marina","Diamandis","22345678");
-        saveFriend("Djivan","Gasparyan","25252525");
-        saveFriend("Babatunde","Olatunji","47474747");
-        saveFriend("Annie","Clark","15151515");
-        saveFriend("Philip","Glass","35353535");
-        saveFriend("Ali","Farka","11111111");
-        saveFriend("Ahmad","Jamal","73735356");
-        saveFriend("Gerard","Schwarz","35353535");
-
-        showFriends();
-
-
         nav.setSelectedItemId(R.id.navigation_reservations);
 
         nav.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
@@ -125,80 +106,6 @@ public class ListReservations extends AppCompatActivity {
                 startActivity(i);
             }
         });
-    }
-
-    // TODO: Move SaveFriend to RegisterFriend class
-    private void saveFriend(String fname_in, String lname_in, String phone_in){
-        final String fname = fname_in;
-        final String lname = lname_in;
-        final String phone = phone_in;
-
-        class SaveFriend extends AsyncTask<Void, Void, Void>{
-            @Override
-            protected Void doInBackground(Void... voids){
-
-                Friend f = new Friend();
-                f.setFirstname(fname);
-                f.setLastname(lname);
-                f.setPhone(phone);
-
-                DatabaseClient.getInstance(getApplicationContext()).getAppDatabase()
-                        .friendDao()
-                        .insert(f);
-                return null;
-            }
-            @Override
-            protected void onPostExecute(Void aVoid){
-                super.onPostExecute(aVoid);
-                Toast.makeText(getApplicationContext(),"Saved",Toast.LENGTH_LONG).show();
-            }
-        }
-        SaveFriend sf = new SaveFriend();
-        sf.execute();
-    }
-
-    private void showFriends(){
-        class ShowFriends extends AsyncTask<Void, Void, List<Friend> >{
-            @Override
-            protected List<Friend> doInBackground(Void... voids){
-                List<Friend> allFriends = DatabaseClient.getInstance(getApplicationContext()).getAppDatabase()
-                        .friendDao()
-                        .getAll();
-                return allFriends;
-            }
-            @Override
-            protected void onPostExecute(List<Friend> allFriends){
-                super.onPostExecute(allFriends);
-                Toast.makeText(getApplicationContext(), "Shown", Toast.LENGTH_LONG).show();
-
-                // REDUNDANT //////
-                String out="";
-                for (Friend f : allFriends){
-                    out = f.getFirstname() + " " + f.getLastname() + " (" + f.getPhone() + ")";
-                }
-                //textView.setText(out);
-                System.out.println("RESULTAT: "+ out);
-                //////////////////
-                displayFriends(allFriends);
-            }
-        }
-        ShowFriends sf = new ShowFriends();
-        sf.execute();
-    }
-
-    public void displayFriends(List<Friend> friendList){
-
-        String[] temp = new String[friendList.size()];
-        int i = 0;
-        for (Friend f : friendList){
-            String tempString = f.getFirstname() + " " + f.getLastname() + " (" + f.getPhone() + ")";
-            temp[i] = tempString;
-            i++;
-        }
-
-        adapter = new ArrayAdapter<String>(this,
-                R.layout.list_item, temp);
-        listView.setAdapter(adapter);
     }
 
     /*
