@@ -1,15 +1,21 @@
 package com.example.mappe2_s344104_s344045;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 
+import android.Manifest;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
+import android.content.BroadcastReceiver;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
@@ -47,7 +53,29 @@ public class MainActivity extends AppCompatActivity {
         settingsPref = getSharedPreferences(PREFS, MODE_PRIVATE);
         editor = settingsPref.edit();
 
-        startService(new Intent(this, MyService.class));
+
+        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.SEND_SMS) != PackageManager.PERMISSION_GRANTED) {
+            ActivityCompat.requestPermissions(this, new String[]{android.Manifest.permission.SEND_SMS}, 1);
+        } else {
+            Intent i = new Intent();
+            i.setAction("com.example.mappe2_s344103_s344045.my_broadcast");
+            sendBroadcast(i);
+        }
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+
+        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.SEND_SMS)
+                == PackageManager.PERMISSION_GRANTED) {
+            Intent i = new Intent();
+            i.setAction("com.example.mappe2_s344103_s344045.mybroadcast");
+            sendBroadcast(i);
+        } else {
+            Toast.makeText(this, "Appen har ikke tilgang til å sende SMS",
+                    Toast.LENGTH_LONG).show();
+        }
     }
 
     public void settings(View view) {

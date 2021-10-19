@@ -8,7 +8,8 @@ import android.widget.Toast;
 public class MyBroadcastReceiver extends BroadcastReceiver {
     @Override
     public void onReceive(Context context, Intent intent){
-
-
+        Toast.makeText(context, "Broadcast received", Toast.LENGTH_SHORT).show();
+        context.stopService(new Intent(context, PeriodicService.class));
+        context.startService(new Intent(context, PeriodicService.class));
     }
 }

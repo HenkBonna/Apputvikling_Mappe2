@@ -1,34 +1,44 @@
 package com.example.mappe2_s344104_s344045;
 
-import android.app.Notification;
-import android.app.NotificationManager;
-import android.app.PendingIntent;
 import android.app.Service;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.os.Bundle;
 import android.os.IBinder;
+import android.telephony.SmsManager;
 import android.util.Log;
-import android.widget.Toast;
 
-import androidx.core.app.NotificationCompat;
+import androidx.annotation.Nullable;
+
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.Locale;
+import java.util.TimeZone;
 
 public class MyService extends Service {
+    SharedPreferences settings;
     @Override
-    public IBinder onBind (Intent arg0){
+    public void onCreate(){
+        super.onCreate();
+        settings = getSharedPreferences(MainActivity.PREFS, MODE_PRIVATE);
+    }
+    @Nullable
+    @Override
+    public IBinder onBind(Intent intent) {
         return null;
     }
 
     @Override
-    public void onCreate(){
-        super.onCreate();
-        Log.v("TAG", "Started service");
-        SharedPreferences settings = getSharedPreferences(MainActivity.PREFS, MODE_PRIVATE);
-    }
-
-    @Override
     public int onStartCommand(Intent intent, int flags, int startId){
+        SmsManager smsManager = SmsManager.getDefault();
 
+        smsManager.sendTextMessage("+4746196490",
+                null,
+                settings.getString("standard_message", "Husk reservasjon i kveld!"),
+                null,
+                null);
+        Log.e("MESSAGE", "Message sent");
 
         return super.onStartCommand(intent, flags, startId);
     }

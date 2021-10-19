@@ -55,10 +55,11 @@
             android:launchMode="singleTop">
 
         </activity>
-        <service android:name="MyService"/>
+        <service android:name="com.example.mappe2_s344104_s344045.PeriodicService"/>
+        <service android:name="com.example.mappe2_s344104_s344045.MyService"/>
         <receiver android:name=".MyBroadcastReceiver" android:exported="true">
             <intent-filter>
-                <action android:name="com.example.mappe2_s344103_s344045.mybroadcast"/>
+                <action android:name="com.example.mappe2_s344103_s344045.my_broadcast"/>
             </intent-filter>
         </receiver>
 

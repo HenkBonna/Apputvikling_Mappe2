@@ -1,19 +1,22 @@
 package com.example.mappe2_s344104_s344045;
 
+import android.Manifest;
+import android.app.AlarmManager;
+import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
-import android.view.View;
 import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.Switch;
 import android.widget.TimePicker;
 
 import androidx.appcompat.app.AppCompatActivity;
-
-import com.google.android.material.switchmaterial.SwitchMaterial;
+import androidx.core.app.ActivityCompat;
 
 public class Settings extends AppCompatActivity {
     private SharedPreferences.Editor editor;
@@ -21,6 +24,7 @@ public class Settings extends AppCompatActivity {
     private TimePicker tp;
     private Switch notif, sms;
     private EditText messageTxt;
+    AlarmManager alarmManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,6 +34,7 @@ public class Settings extends AppCompatActivity {
         //getting shared preferences and an editor
         settings = getSharedPreferences(MainActivity.PREFS, MODE_PRIVATE);
         editor = settings.edit();
+        alarmManager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
 
         //finding timepicker and setting to 24hour view
         tp = findViewById(R.id.timepicker);
@@ -73,6 +78,8 @@ public class Settings extends AppCompatActivity {
                 editor.putInt("hour", tp.getHour());
                 editor.putInt("minute", tp.getMinute());
                 editor.apply();
+                cancelAlarm();
+                sendBroadcast();
             }
         };
 
@@ -80,13 +87,22 @@ public class Settings extends AppCompatActivity {
         CompoundButton.OnCheckedChangeListener onSMSCheckedChangeListener = new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
-                if (settings.getBoolean("sms_enabled", true)){
-                    editor.putBoolean("sms_enabled", false);
+                if (ActivityCompat.checkSelfPermission(getApplicationContext(), Manifest.permission.SEND_SMS)
+                        == PackageManager.PERMISSION_GRANTED) {
+                    if (settings.getBoolean("sms_enabled", true)) {
+                        editor.putBoolean("sms_enabled", false);
+                        cancelAlarm();
+                    } else {
+                        editor.putBoolean("sms_enabled", true);
+                        resumeAlarm();
+                    }
+                    editor.apply();
                 } else {
-                    editor.putBoolean("sms_enabled", true);
+                    ActivityCompat.requestPermissions(getParent(), new String[]{android.Manifest.permission.SEND_SMS}, 1);
                 }
-                editor.apply();
             }
+
+
         };
         CompoundButton.OnCheckedChangeListener onNotifCheckedChangeListener = new CompoundButton.OnCheckedChangeListener() {
             @Override
@@ -112,5 +128,16 @@ public class Settings extends AppCompatActivity {
         tp.setOnTimeChangedListener(onTimeChangedListener);
         sms.setOnCheckedChangeListener(onSMSCheckedChangeListener);
         notif.setOnCheckedChangeListener(onNotifCheckedChangeListener);
+    }
+    public void sendBroadcast(){
+        Intent intent = new Intent();
+        intent.setAction("com.example.mappe2_s344103_s344045.mybroadcast");
+        sendBroadcast(intent);
+    }
+    private void cancelAlarm() {
+        PeriodicService.cancelAlarm();
+    }
+    private void resumeAlarm(){
+        PeriodicService.startAlarm();
     }
 }
