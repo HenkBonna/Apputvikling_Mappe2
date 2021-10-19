@@ -26,22 +26,32 @@ public class Settings extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_settings);
-        tp = findViewById(R.id.timepicker);
-        tp.setIs24HourView(true);
+
+        //getting shared preferences and an editor
         settings = getSharedPreferences(MainActivity.PREFS, MODE_PRIVATE);
         editor = settings.edit();
-        notif = findViewById(R.id.notif_switch);
-        sms = findViewById(R.id.sms_switch);
-        messageTxt = findViewById(R.id.messageTextStandard);
-        sms.setChecked(settings.getBoolean("sms_enabled", false));
-        notif.setChecked(settings.getBoolean("notification_enabled", false));
 
+        //finding timepicker and setting to 24hour view
+        tp = findViewById(R.id.timepicker);
+        tp.setIs24HourView(true);
+
+        //finding switches for notifications and sms service, setting to correct check
+        notif = findViewById(R.id.notif_switch);
+        notif.setChecked(settings.getBoolean("notification_enabled", false));
+        sms = findViewById(R.id.sms_switch);
+        sms.setChecked(settings.getBoolean("sms_enabled", false));
+
+        //finding standard message text field
+        messageTxt = findViewById(R.id.messageTextStandard);
+
+        //making sure standard_message exists, and setting it in the text field
         if (!settings.contains("standard_message")){
             Log.e("PREFERENCE ADDED", "Preference added");
             editor.putString("standard_message", "Husk reservasjon i kveld!");
         }
         messageTxt.setText(settings.getString("standard_message", null));
 
+        //onchange listeners to save the new message and time when it is edited
         messageTxt.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) { }
@@ -65,6 +75,8 @@ public class Settings extends AppCompatActivity {
                 editor.apply();
             }
         };
+
+        //onchange listeners to save notification and sms service
         CompoundButton.OnCheckedChangeListener onSMSCheckedChangeListener = new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
@@ -94,6 +106,7 @@ public class Settings extends AppCompatActivity {
             editor.putBoolean("sms_enabled", false);
         }
 
+        //initiating timepicker to match preference, and setting onchange listeners
         tp.setHour(settings.getInt("hour", 8));
         tp.setMinute(settings.getInt("minute", 0));
         tp.setOnTimeChangedListener(onTimeChangedListener);
