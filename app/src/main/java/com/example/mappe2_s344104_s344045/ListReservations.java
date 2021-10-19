@@ -2,6 +2,7 @@ package com.example.mappe2_s344104_s344045;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
@@ -10,6 +11,7 @@ import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.TableLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -17,6 +19,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.navigation.NavigationBarView;
+
+import java.util.List;
 
 public class ListReservations extends AppCompatActivity {
 
@@ -53,11 +57,13 @@ public class ListReservations extends AppCompatActivity {
 
         // TODO: Replace with reading from _db
         // FILL with Tables
-        String[] temp = {"Reservasjon 1","Reservasjon 2"};
+        //String[] temp = {"Reservasjon 1","Reservasjon 2"};
         // TODO: Look into ArrayAdapters, to create better-looking listitems: vogella.com/tutorials/AndroidListView/article.html
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
-                R.layout.list_item, temp);
-        listView.setAdapter(adapter);
+        //ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
+        //        R.layout.list_item, temp);
+        //listView.setAdapter(adapter);
+
+
 
         nav.setSelectedItemId(R.id.navigation_reservations);
         nav.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
@@ -89,8 +95,10 @@ public class ListReservations extends AppCompatActivity {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent i = new Intent(view.getContext(), RegisterFriend.class);
-                startActivity(i);
+                saveFriend();
+                showFriends();
+                //Intent i = new Intent(view.getContext(), RegisterFriend.class); //TODO: Undo this thingy
+                //startActivity(i);
             }
         });
         imgBtn.setOnClickListener(new View.OnClickListener() {
@@ -100,6 +108,61 @@ public class ListReservations extends AppCompatActivity {
                 startActivity(i);
             }
         });
+    }
+
+    // TODO: Move SaveFriend to RegisterFriend class
+    private void saveFriend(){
+        final String fname = "Espen";
+        final String lname = "Ekeberg";
+        final String phone = "42 069 217";
+
+        class SaveFriend extends AsyncTask<Void, Void, Void>{
+            @Override
+            protected Void doInBackground(Void... voids){
+
+                Friend f = new Friend();
+                f.setFirstname(fname);
+                f.setLastname(lname);
+                f.setPhone(phone);
+
+                DatabaseClient.getInstance(getApplicationContext()).getAppDatabase()
+                        .friendDao()
+                        .insert(f);
+                return null;
+            }
+            @Override
+            protected void onPostExecute(Void aVoid){
+                super.onPostExecute(aVoid);
+                Toast.makeText(getApplicationContext(),"Saved",Toast.LENGTH_LONG).show();
+            }
+        }
+        SaveFriend sf = new SaveFriend();
+        sf.execute();
+    }
+
+    private void showFriends(){
+        class ShowFriends extends AsyncTask<Void, Void, List<Friend> >{
+            @Override
+            protected List<Friend> doInBackground(Void... voids){
+                List<Friend> allFriends = DatabaseClient.getInstance(getApplicationContext()).getAppDatabase()
+                        .friendDao()
+                        .getAll();
+                return allFriends;
+            }
+            @Override
+            protected void onPostExecute(List<Friend> allFriends){
+                super.onPostExecute(allFriends);
+                Toast.makeText(getApplicationContext(), "Shown", Toast.LENGTH_LONG).show();
+                String out="";
+                for (Friend f : allFriends){
+                    out = f.getFirstname() + " " + f.getLastname() + " (" + f.getPhone() + ")";
+                }
+                textView.setText(out);
+                System.out.println("RESULTAT: "+ out);
+            }
+        }
+        ShowFriends sf = new ShowFriends();
+        sf.execute();
     }
 
     /*
