@@ -43,9 +43,6 @@ public class PeriodicService extends Service {
 
         Log.v("TAG", "Started service");
         settings = getSharedPreferences(MainActivity.PREFS, MODE_PRIVATE);
-        if (settings.getBoolean("sms_enabled", false)) {
-            Toast.makeText(getApplicationContext(), "Service running", Toast.LENGTH_SHORT).show();
-        }
         Intent i = new Intent(this, MyService.class);
         pi = PendingIntent.getService(this, 0, i, 0);
         alarmManager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
@@ -76,7 +73,6 @@ public class PeriodicService extends Service {
             cal.set(Calendar.SECOND, 0);
             cal.set(Calendar.MILLISECOND, 0);
 
-            long millisPerDay = 24 * 60 * 60 * 1000;
             Log.e("Alarm start", "" + cal.getTime());
             if (cal.getTimeInMillis() < System.currentTimeMillis()) {
                 cal.set(Calendar.DAY_OF_MONTH, cal.get(Calendar.DAY_OF_MONTH) + 1);

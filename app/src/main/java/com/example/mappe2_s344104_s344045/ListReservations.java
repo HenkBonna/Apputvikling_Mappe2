@@ -117,7 +117,6 @@ public class ListReservations extends AppCompatActivity {
         if (ActivityCompat.checkSelfPermission(this, android.Manifest.permission.SEND_SMS) != PackageManager.PERMISSION_GRANTED) {
             ActivityCompat.requestPermissions(this, new String[]{android.Manifest.permission.SEND_SMS}, 1);
         } else {
-            Toast.makeText(this, "Sending broadcast", Toast.LENGTH_SHORT).show();
             Intent intent = new Intent();
             intent.setAction("MY_BROADCAST");
             sendBroadcast(intent, Manifest.permission.SEND_SMS);
