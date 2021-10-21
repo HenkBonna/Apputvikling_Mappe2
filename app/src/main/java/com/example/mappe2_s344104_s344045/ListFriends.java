@@ -3,13 +3,8 @@ package com.example.mappe2_s344104_s344045;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemClickListener;
-import android.widget.ArrayAdapter;
-import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -31,7 +26,7 @@ public class ListFriends extends AppCompatActivity {
     private BottomNavigationView nav;
     private ImageButton imgBtn;
 
-    ArrayAdapter<String> adapter;
+    FriendAdapter adapter;
 
     boolean findABetterWayOfCheckingThis = false;
 
@@ -182,8 +177,8 @@ public class ListFriends extends AppCompatActivity {
             i++;
         }
 
-        adapter = new ArrayAdapter<String>(this,
-                R.layout.list_item, temp);
+        adapter = new FriendAdapter(this,
+                R.layout.friend_entry, friendList);
         listView.setAdapter(adapter);
     }
 

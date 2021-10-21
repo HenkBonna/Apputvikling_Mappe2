@@ -1,0 +1,65 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="5dp"
+    tools:context=".MainActivity">
+
+    <TextView
+        android:id="@+id/textView_restaurantName"
+        android:layout_width="wrap_content"
+        android:layout_height="32dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:gravity="center"
+        android:text="RestaurantName"
+        android:textSize="20sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/textView_restaurantType"
+        android:layout_width="wrap_content"
+        android:layout_height="64dp"
+        android:layout_marginStart="18dp"
+        android:layout_toEndOf="@id/textView_restaurantName"
+        android:gravity="center"
+        android:text="Type"
+        android:textSize="16sp" />
+
+    <TextView
+        android:id="@+id/textView_restaurantPhoneNumber"
+        android:layout_width="wrap_content"
+        android:layout_height="64dp"
+        android:layout_marginStart="16dp"
+        android:layout_toLeftOf="@id/button_editRestaurant"
+        android:gravity="center"
+        android:text="Phonenumber"
+        android:textSize="20sp" />
+
+    <TextView
+        android:id="@+id/textView_restaurantAddress"
+        android:layout_width="wrap_content"
+        android:layout_height="32dp"
+        android:layout_below="@id/textView_restaurantName"
+        android:layout_marginStart="16dp"
+        android:gravity="center"
+        android:text="Address"
+        android:textSize="16sp" />
+
+
+
+    <ImageButton
+        android:id="@+id/button_editRestaurant"
+        android:layout_width="48dp"
+        android:layout_height="64dp"
+        android:layout_alignParentRight="true"
+        android:background="@android:color/transparent"
+        android:contentDescription="More "
+        android:focusable="false"
+        android:focusableInTouchMode="false"
+        android:src="@drawable/ic_baseline_more_vert_24"
+        app:tint="@color/nearblack" />
+
+
+</RelativeLayout>
