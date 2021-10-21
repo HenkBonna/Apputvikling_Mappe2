@@ -74,4 +74,9 @@ public class Restaurant {
     public void set_ID(Long _ID) {
         this._ID = _ID;
     }
+
+    @Override
+    public String toString(){
+        return name + ", " + address + ", " + type;
+    }
 }

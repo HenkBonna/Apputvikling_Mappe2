@@ -41,11 +41,11 @@ public class MyService extends Service {
                 .getAll();
 
         Calendar cal = Calendar.getInstance();
-        SimpleDateFormat dateFormat = new SimpleDateFormat("EEE MMM dd hh:mm:ss 'GMT'Z yyyy");
+        SimpleDateFormat dateFormat = new SimpleDateFormat("dd.mm.yyyy");
         String today = dateFormat.format(cal.getTime());
         for (Reservation r : reservations){
             if (r.getDate().equals(today)){
-                String message = settings.getString("standard_message", "Husk reservasjon i kveld!")
+                String message = settings.getString("standard_message", "Husk reservasjon i kveld! ")
                         + r.getRestaurant() + " kl " + r.getTime();
                 FriendsList friendsList = r.getFriends();
                 List<Friend> friends = friendsList.getFriends();

@@ -8,6 +8,7 @@ public class FriendsList {
     private ArrayList<Friend> friends;
 
     public FriendsList() {
+        friends = new ArrayList<>();
     }
 
     public FriendsList(List<Friend> friends) {

@@ -9,6 +9,7 @@ import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ArrayAdapter;
@@ -27,6 +28,8 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.navigation.NavigationBarView;
 
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.List;
 
 public class ListReservations extends AppCompatActivity {
@@ -54,7 +57,6 @@ public class ListReservations extends AppCompatActivity {
         settingsPref = getSharedPreferences(PREFS, MODE_PRIVATE);
         editor = settingsPref.edit();
         //startService(new Intent(this, MyService.class));
-
 
         textView = (TextView) findViewById(R.id.header);
         listView = (ListView) findViewById(R.id.listView);
@@ -102,7 +104,7 @@ public class ListReservations extends AppCompatActivity {
             public void onClick(View view) {
                 //saveFriend();
                 //showFriends();
-                Intent i = new Intent(view.getContext(), RegisterFriend.class); //TODO: Undo this thingy
+                Intent i = new Intent(view.getContext(), AddReservation.class); //TODO: Undo this thingy
                 startActivity(i);
             }
         });
