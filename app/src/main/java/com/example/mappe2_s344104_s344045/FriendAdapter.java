@@ -6,7 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
-import android.widget.Button;
+import android.widget.ImageButton;
 import com.example.mappe2_s344104_s344045.Friend;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -29,7 +29,7 @@ public class FriendAdapter extends ArrayAdapter<Friend> {
         public TextView textView_firstName;
         public TextView textView_lastName;
         public TextView textView_phoneNumber;
-        public Button button_edit;
+        public ImageButton button_edit;
 
     }
 
@@ -45,7 +45,7 @@ public class FriendAdapter extends ArrayAdapter<Friend> {
             holder.textView_firstName = (TextView) row.findViewById(R.id.textView_firstName);
             holder.textView_lastName = (TextView) row.findViewById(R.id.textView_lastName);
             holder.textView_phoneNumber = (TextView) row.findViewById(R.id.textView_phoneNumber);
-            holder.button_edit = (Button) row.findViewById(R.id.button_edit);
+            holder.button_edit = (ImageButton) row.findViewById(R.id.button_edit);
             row.setTag(holder);
         }
         else {
@@ -54,10 +54,12 @@ public class FriendAdapter extends ArrayAdapter<Friend> {
         Friend friend = friendList.get(position);
         holder.textView_firstName.setText(friend.getFirstname());
         holder.textView_lastName.setText(friend.getLastname());
+        String friendPhoneString = "(" + friend.getPhone() +")";
+        holder.textView_phoneNumber.setText(friendPhoneString);
         holder.button_edit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(context, "YOU CLICKED EDIT", Toast.LENGTH_LONG).show(); //TODO: This
+                Toast.makeText(context, "YOU CLICKED EDIT ON FRIEND WITH ID: " + friend.get_ID() + " ! ", Toast.LENGTH_LONG).show(); //TODO: This
             }
         });
         return row;

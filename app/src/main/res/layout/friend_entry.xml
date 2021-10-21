@@ -1,0 +1,52 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="5dp"
+    tools:context=".MainActivity">
+
+    <TextView
+        android:id="@+id/textView_firstName"
+        android:layout_width="wrap_content"
+        android:layout_height="64dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:gravity="center"
+        android:text="Firstname"
+        android:textSize="20sp" />
+
+    <TextView
+        android:id="@+id/textView_lastName"
+        android:layout_width="wrap_content"
+        android:layout_height="64dp"
+        android:layout_marginStart="4dp"
+        android:layout_toEndOf="@id/textView_firstName"
+        android:gravity="center"
+        android:text="Lastname"
+        android:textSize="20sp" />
+
+    <TextView
+        android:id="@+id/textView_phoneNumber"
+        android:layout_width="wrap_content"
+        android:layout_height="64dp"
+        android:layout_marginStart="16dp"
+        android:layout_toEndOf="@id/textView_lastName"
+        android:gravity="center"
+        android:text="Phonenumber"
+        android:textSize="20sp" />
+
+    <ImageButton
+        android:id="@+id/button_edit"
+        android:layout_width="48dp"
+        android:layout_height="64dp"
+        android:layout_alignParentRight="true"
+        android:background="@android:color/transparent"
+        android:contentDescription="More "
+        android:focusable="false"
+        android:focusableInTouchMode="false"
+        android:src="@drawable/ic_baseline_more_vert_24"
+        app:tint="@color/nearblack" />
+
+
+</RelativeLayout>

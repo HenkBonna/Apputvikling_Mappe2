@@ -29,7 +29,7 @@ public class ListRestaurants extends AppCompatActivity {
     private BottomNavigationView nav;
     private ImageButton imgBtn;
 
-    private ArrayAdapter<String> adapter;
+    RestaurantAdapter adapter;
 
     private boolean findABetterWayOfCheckingThis = false;
 
@@ -175,8 +175,8 @@ public class ListRestaurants extends AppCompatActivity {
             i++;
         }
 
-        adapter = new ArrayAdapter<String>(this,
-                R.layout.list_item, temp);
+        adapter = new RestaurantAdapter(this,
+                R.layout.restaurant_entry, restaurantList);
         listView.setAdapter(adapter);
     }
 
