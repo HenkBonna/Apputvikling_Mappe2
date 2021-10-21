@@ -1,19 +1,25 @@
 package com.example.mappe2_s344104_s344045;
 
+import android.graphics.Color;
 import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.DatePicker;
-import android.widget.ListView;
+import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.TableLayout;
+import android.widget.TableRow;
+import android.widget.TextView;
 import android.widget.TimePicker;
 import android.widget.Toast;
 
+import androidx.annotation.ColorInt;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -31,7 +37,7 @@ public class AddReservation extends AppCompatActivity {
     private String date;
     private String time;
     private Button button;
-    private ListView listView;
+    private TableLayout tableLayout;
 
     @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
@@ -49,7 +55,7 @@ public class AddReservation extends AppCompatActivity {
         timePicker.setHour(12);
         timePicker.setMinute(0);
         button = findViewById(R.id.dateButton);
-        listView = findViewById(R.id.table_friends);
+        tableLayout = findViewById(R.id.table_friends);
         fillSpinners();
 
         friendsSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
@@ -66,7 +72,6 @@ public class AddReservation extends AppCompatActivity {
             @Override
             public void onItemSelected(AdapterView<?> arg0, View view, int arg2, long arg3){
                 restaurant = (Restaurant) restaurants.getSelectedItem();
-                restaurants.setPrompt(restaurant.getName());
             }
             @Override
             public void onNothingSelected(AdapterView<?> arg0){
@@ -96,23 +101,10 @@ public class AddReservation extends AppCompatActivity {
 
     public void saveReservation(View view) {
         //TODO implement method
+        time = timePicker.getHour() + ":" + timePicker.getMinute();
+        date = datePicker.getDayOfMonth() + "." + (datePicker.getMonth()+1) + "." + datePicker.getYear();
         //Restaurant restaurant = new Restaurant("Xiao's Chinese", "Osloveien 82", "22xxxxxx", "Kinesisk"); //TODO change to get value from spinner
-
-        if (restaurant != null){
-            if (date != null){
-                if (time != null){
-                    Reservation reservation = new Reservation(restaurant, date, time, friendList);
-
-                } else {
-                    Toast.makeText(this,"Ingen tid valgt", Toast.LENGTH_SHORT).show();
-                }
-            } else {
-                Toast.makeText(this, "Ingen dato valgt", Toast.LENGTH_SHORT).show();
-            }
-        } else {
-            Toast.makeText(this, "Ingen restaurant valgt", Toast.LENGTH_SHORT).show();
-        }
-        //TODO save to DB
+        Reservation reservation = new Reservation(restaurant, date, time, friendList);
     }
 
     public void fillSpinners(){
@@ -151,7 +143,8 @@ public class AddReservation extends AppCompatActivity {
                 List<Friend> allFriends = new ArrayList<>();
 
                 allFriends.add(new Friend(0, "Anders", "Andersen", "47474747"));
-                allFriends.add( new Friend(1, "Jonas", "Johnsen", "48484848"));
+                allFriends.add(new Friend(1, "Jonas", "Johnsen", "48484848"));
+                allFriends.add(new Friend(2, "Kristian", "Kristiansen", "41414141"));
                 ArrayAdapter<Friend> restaurantArrayAdapter = new ArrayAdapter<Friend>(getApplicationContext(), R.layout.spinner_item, allFriends);
                 friendsSpinner.setAdapter(restaurantArrayAdapter);
                 return allFriends;
@@ -161,13 +154,23 @@ public class AddReservation extends AppCompatActivity {
         ff.execute();
     }
 
-    public void addToReservation(Object friend) {
-        //Friend friend = new Friend("Fornavn", "Etternavn", "44881133");//TODO change for getValue or something
-        if (friend != null) {
-            Friend newFriend = (Friend) friend;
-            friendList.add(newFriend);
-            listView.addView();
+    public void addToReservation(Object o) {
+        if (o != null) {
+            Friend friend = (Friend) o;
+            friendList.add(friend);
+            addFriendToDisplayList(friend);
+
         }
+    }
+
+    private void addFriendToDisplayList(Friend friend) {
+        TableRow tr = new TableRow(this);
+        tr.setLayoutParams(new TableRow.LayoutParams(TableRow.LayoutParams.MATCH_PARENT, TableRow.LayoutParams.WRAP_CONTENT));
+        TextView textView = new TextView(this);
+        textView.setText(friend.toString());
+        textView.setTextColor(Color.parseColor("#000000"));
+        tr.addView(textView);
+        tableLayout.addView(tr, new TableLayout.LayoutParams(TableLayout.LayoutParams.MATCH_PARENT, TableLayout.LayoutParams.WRAP_CONTENT));
     }
 
     public void switchPicker(View view) {
