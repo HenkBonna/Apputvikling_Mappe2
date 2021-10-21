@@ -31,7 +31,7 @@ public class ListFriends extends AppCompatActivity {
     private BottomNavigationView nav;
     private ImageButton imgBtn;
 
-    ArrayAdapter<String> adapter;
+    FriendAdapter adapter;
 
     boolean findABetterWayOfCheckingThis = false;
 
@@ -182,8 +182,8 @@ public class ListFriends extends AppCompatActivity {
             i++;
         }
 
-        adapter = new ArrayAdapter<String>(this,
-                R.layout.list_item, temp);
+        adapter = new FriendAdapter(this,
+                R.layout.list_entry, friendList);
         listView.setAdapter(adapter);
     }
 
