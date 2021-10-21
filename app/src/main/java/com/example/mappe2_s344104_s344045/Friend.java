@@ -66,6 +66,6 @@ public class Friend {
 
     @Override
     public String toString() {
-        return firstname + " " + lastname + "(" + phone + ")";
+        return firstname + " " + lastname + " (" + phone + ")";
     }
 }

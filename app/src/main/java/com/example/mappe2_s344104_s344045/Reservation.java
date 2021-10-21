@@ -5,6 +5,8 @@ import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 import androidx.room.TypeConverters;
 
+import java.util.List;
+
 @Entity
 public class Reservation {
 
@@ -81,5 +83,19 @@ public class Reservation {
 
     public void setFriends(FriendsList friends) {
         this.friends = friends;
+    }
+
+    @Override
+    public String toString(){
+        String str = "Restaurant: " + restaurant + " Dato: " + date + " Tidspunkt: " + time + " Venner: ";
+        List<Friend> friendList = friends.getFriends();
+        for (Friend f : friendList){
+            if (friendList.indexOf(f) +1 < friendList.size()) {
+                str += f.toString() + ", ";
+            } else {
+                str += f.toString();
+            }
+        }
+        return str;
     }
 }

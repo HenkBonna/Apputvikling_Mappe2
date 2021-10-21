@@ -71,38 +71,15 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/reservationDate" />
 
-    <Spinner
-        android:id="@+id/spinner_friends"
-        android:layout_width="0dp"
-        android:layout_height="48dp"
-        android:minHeight="48dp"
-        android:gravity="center_horizontal"
-        android:spinnerMode="dropdown"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/label_friends"
-        tools:ignore="SpeakableTextPresentCheck" />
-
-    <ScrollView
+    <ListView
+        android:id="@+id/list_of_friends"
         android:layout_width="match_parent"
         android:layout_height="100dp"
-        android:scrollbars="none"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_weight="1"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/save_reservation"
-        tools:ignore="SpeakableTextPresentCheck">
+        app:layout_constraintTop_toBottomOf="@+id/label_friends">
 
-        <TableLayout
-            android:id="@+id/table_friends"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="0dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent">
-
-        </TableLayout>
-    </ScrollView>
+    </ListView>
 
     <Button
         android:id="@+id/save_reservation"
@@ -113,7 +90,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.512"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/spinner_friends"
+        app:layout_constraintTop_toBottomOf="@+id/list_of_friends"
         app:layout_constraintWidth_percent="0.7" />
 
     <Button
