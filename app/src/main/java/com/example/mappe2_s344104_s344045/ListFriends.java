@@ -108,34 +108,10 @@ public class ListFriends extends AppCompatActivity {
         });
     }
 
-    // TODO: Move SaveFriend to RegisterFriend class
-    private void saveFriend(String fname_in, String lname_in, String phone_in){
-        final String fname = fname_in;
-        final String lname = lname_in;
-        final String phone = phone_in;
-
-        class SaveFriend extends AsyncTask<Void, Void, Void> {
-            @Override
-            protected Void doInBackground(Void... voids){
-
-                Friend f = new Friend();
-                f.setFirstname(fname);
-                f.setLastname(lname);
-                f.setPhone(phone);
-
-                DatabaseClient.getInstance(getApplicationContext()).getAppDatabase()
-                        .friendDao()
-                        .insert(f);
-                return null;
-            }
-            @Override
-            protected void onPostExecute(Void aVoid){
-                super.onPostExecute(aVoid);
-                //Toast.makeText(getApplicationContext(),"Saved",Toast.LENGTH_LONG).show();
-            }
-        }
-        SaveFriend sf = new SaveFriend();
-        sf.execute();
+    @Override
+    public void onResume(){
+        super.onResume();
+        showFriends();
     }
 
     private void showFriends(){
@@ -150,7 +126,6 @@ public class ListFriends extends AppCompatActivity {
             @Override
             protected void onPostExecute(List<Friend> allFriends){
                 super.onPostExecute(allFriends);
-                Toast.makeText(getApplicationContext(), "Shown", Toast.LENGTH_LONG).show();
 
                 // REDUNDANT //////
                 String out="";
@@ -181,11 +156,4 @@ public class ListFriends extends AppCompatActivity {
                 R.layout.friend_entry, friendList);
         listView.setAdapter(adapter);
     }
-
-/*
-    public void gotoRestaurants(View view){
-        Intent i = new Intent(view.getContext(), ListRestaurants.class);
-        startActivity(i);
-    }
-    */
 }

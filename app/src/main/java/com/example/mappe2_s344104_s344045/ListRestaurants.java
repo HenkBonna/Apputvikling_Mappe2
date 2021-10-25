@@ -103,37 +103,10 @@ public class ListRestaurants extends AppCompatActivity {
             }
         });
     }
-
-    // TODO: Move SaveRestaurant to RegisterRestaurant class
-    private void saveRestaurant(String name_in, String address_in, String type_in, String phone_in){
-        final String name = name_in;
-        final String address = address_in;
-        final String type = type_in;
-        final String phone = phone_in;
-
-        class SaveRestaurant extends AsyncTask<Void, Void, Void> {
-            @Override
-            protected Void doInBackground(Void... voids){
-
-                Restaurant r = new Restaurant();
-                r.setName(name);
-                r.setAddress(address);
-                r.setType(type);
-                r.setPhone(phone);
-
-                DatabaseClient.getInstance(getApplicationContext()).getAppDatabase()
-                        .restaurantDao()
-                        .insert(r);
-                return null;
-            }
-            @Override
-            protected void onPostExecute(Void aVoid){
-                super.onPostExecute(aVoid);
-                //Toast.makeText(getApplicationContext(),"Saved",Toast.LENGTH_LONG).show();
-            }
-        }
-        SaveRestaurant sr = new SaveRestaurant();
-        sr.execute();
+    @Override
+    public void onResume(){
+        super.onResume();
+        showRestaurants();
     }
 
     private void showRestaurants(){
@@ -148,7 +121,6 @@ public class ListRestaurants extends AppCompatActivity {
             @Override
             protected void onPostExecute(List<Restaurant> allRestaurants){
                 super.onPostExecute(allRestaurants);
-                Toast.makeText(getApplicationContext(), "Shown", Toast.LENGTH_LONG).show();
 
                 // REDUNDANT //////
                 String out="";

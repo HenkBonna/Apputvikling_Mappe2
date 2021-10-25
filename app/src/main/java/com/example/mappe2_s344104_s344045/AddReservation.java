@@ -21,6 +21,7 @@ import android.widget.Toast;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
+import java.nio.channels.AsynchronousChannelGroup;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
@@ -97,14 +98,29 @@ public class AddReservation extends AppCompatActivity {
     }
 
     public void saveReservation(View view) {
-        //TODO save this to db
-        time = timePicker.getHour() + ":" + timePicker.getMinute();
-        date = datePicker.getDayOfMonth() + "." + (datePicker.getMonth()+1) + "." + datePicker.getYear();
-        List<Friend> items = adapter.getCheckedFriends();
-        friendList.setFriends(items);
-        Reservation reservation = new Reservation(restaurant, date, time, friendList);
-        Log.e("RESERVATION", reservation.toString());
-        //finish();
+        class SaveReservation extends AsyncTask<Void, Void, Void> {
+            @Override
+            protected Void doInBackground(Void... voids) {
+                //TODO save this to db
+                time = timePicker.getHour() + ":" + timePicker.getMinute();
+                date = datePicker.getDayOfMonth() + "." + (datePicker.getMonth() + 1) + "." + datePicker.getYear();
+                List<Friend> items = adapter.getCheckedFriends();
+                friendList.setFriends(items);
+                Reservation reservation = new Reservation(restaurant, date, time, friendList);
+                DatabaseClient.getInstance(getApplicationContext())
+                        .getAppDatabase()
+                        .reservationDao()
+                        .insert(reservation);
+                return null;
+            }
+            @Override
+            protected void onPostExecute(Void aVoid){
+                super.onPostExecute(aVoid);
+                finish();
+            }
+        }
+        SaveReservation sr = new SaveReservation();
+        sr.execute();
     }
 
     public void fillSpinners(){
@@ -115,14 +131,10 @@ public class AddReservation extends AppCompatActivity {
         class FillRestaurants extends AsyncTask<Void, Void, List<Restaurant>>{
             @Override
             protected List<Restaurant> doInBackground(Void... voids){
-                List<Restaurant> allRestaurants = new ArrayList<>();
-                //TODO restore the database call once restaurants are saved to db
-                allRestaurants.add(new Restaurant("Xiao's", "Osloveien 82", "22xxxxxx", "Kinesisk"));
-                allRestaurants.add(new Restaurant("Luigi's", "Little Italy 14", "2222xxxx","Pizza"));
-                        /*DatabaseClient.getInstance(getApplicationContext())
+                List<Restaurant> allRestaurants = DatabaseClient.getInstance(getApplicationContext())
                         .getAppDatabase()
                         .restaurantDao()
-                        .getAll();*/
+                        .getAll();
                 ArrayAdapter<Restaurant> restaurantArrayAdapter = new ArrayAdapter<Restaurant>(getApplicationContext(), R.layout.spinner_item, allRestaurants);
                 restaurants.setAdapter(restaurantArrayAdapter);
                 return allRestaurants;
@@ -136,16 +148,11 @@ public class AddReservation extends AppCompatActivity {
         class ShowFriends extends AsyncTask<Void, Void, List<Friend>>{
             @Override
             protected List<Friend> doInBackground(Void... voids){
-                List<Friend> allFriends = new ArrayList<>();
-                //TODO restore the database call once friends are saved to db
-                allFriends.add(new Friend(0, "Anders", "Andersen", "47474747"));
-                allFriends.add( new Friend(1, "Jonas", "Johnsen", "48484848"));
-                allFriends.add(new Friend(2, "Kristian", "Kristiansen", "41414141"));
-
-                        /*DatabaseClient.getInstance(getApplicationContext())
+                List<Friend> allFriends = DatabaseClient.getInstance(getApplicationContext())
                         .getAppDatabase()
                         .friendDao()
-                        .getAll();*/
+                        .getAll();
+
                 displayFriends(allFriends);
                 return allFriends;
             }
@@ -158,13 +165,6 @@ public class AddReservation extends AppCompatActivity {
                 R.layout.friend_picker, friends);
         listView.setAdapter(adapter);
     }
-    /*
-    public void addToReservation(Object o) {
-        if (o != null) {
-            Friend friend = (Friend) o;
-            friendList.add(friend);
-        }
-    }*/
 
     public void switchPicker(View view) {
         if (datePicker.getVisibility() == View.VISIBLE) {

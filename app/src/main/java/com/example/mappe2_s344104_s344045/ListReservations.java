@@ -43,10 +43,10 @@ public class ListReservations extends AppCompatActivity {
     private DBHandler db;
     public final static String PREFS = "PrefsFile";
 
-    ArrayAdapter<String> adapter;
-
     private SharedPreferences settingsPref;
     private SharedPreferences.Editor editor;
+
+    private ReservationAdapter adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -123,6 +123,13 @@ public class ListReservations extends AppCompatActivity {
             intent.setAction("MY_BROADCAST");
             sendBroadcast(intent, Manifest.permission.SEND_SMS);
         }
+
+        showReservations();
+    }
+    @Override
+    public void onResume(){
+        super.onResume();
+        showReservations();
     }
 
     @Override
@@ -138,6 +145,31 @@ public class ListReservations extends AppCompatActivity {
             Toast.makeText(this, "Appen har ikke tilgang til å sende SMS",
                     Toast.LENGTH_LONG).show();
         }
+    }
+
+    public void showReservations(){
+        class ShowReservations extends AsyncTask<Void, Void, List<Reservation>>{
+            @Override
+            protected List<Reservation> doInBackground(Void... voids){
+                List<Reservation> allReservations = DatabaseClient.getInstance(getApplicationContext())
+                        .getAppDatabase()
+                        .reservationDao()
+                        .getAll();
+                return allReservations;
+            }
+            @Override
+            protected void onPostExecute(List<Reservation> allReservations){
+                super.onPostExecute(allReservations);
+                displayReservations(allReservations);
+            }
+        }
+        ShowReservations sr = new ShowReservations();
+        sr.execute();
+    }
+
+    private void displayReservations(List<Reservation> allReservations) {
+        adapter = new ReservationAdapter(this, R.layout.reservation_entry, allReservations);
+        listView.setAdapter(adapter);
     }
 
     /*

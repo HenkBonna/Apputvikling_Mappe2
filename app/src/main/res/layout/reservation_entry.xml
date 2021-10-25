@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/textView_restaurant"
+        android:layout_width="wrap_content"
+        android:layout_height="64dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:gravity="center"
+        android:text="Restaurant"
+        android:textSize="20sp" />
+
+    <TextView
+        android:id="@+id/textView_date"
+        android:layout_width="wrap_content"
+        android:layout_height="64dp"
+        android:layout_marginEnd="16dp"
+        android:layout_toStartOf="@+id/textView_time"
+        android:gravity="center"
+        android:text="Date"
+        android:textSize="20sp" />
+
+    <TextView
+        android:id="@+id/textView_time"
+        android:layout_width="wrap_content"
+        android:layout_height="64dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginEnd="16dp"
+        android:layout_toStartOf="@+id/button_editReservation"
+        android:gravity="center"
+        android:text="Time"
+        android:textSize="20sp" />
+
+    <ImageButton
+        android:id="@+id/button_editReservation"
+        android:layout_width="48dp"
+        android:layout_height="64dp"
+        android:layout_alignParentRight="true"
+        android:background="@android:color/transparent"
+        android:contentDescription="More "
+        android:focusable="false"
+        android:focusableInTouchMode="false"
+        android:src="@drawable/ic_baseline_more_vert_24"
+        app:tint="@color/nearblack" />
+</RelativeLayout>

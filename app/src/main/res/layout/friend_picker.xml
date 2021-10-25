@@ -13,7 +13,7 @@
         android:layout_alignParentTop="true"
         android:gravity="center"
         android:minWidth="20dp"
-        android:textSize="20sp"
+        android:textSize="15sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -23,6 +23,7 @@
         android:layout_height="48dp"
         android:gravity="center"
         android:minWidth="20dp"
+        android:textSize="15sp"
         app:layout_constraintStart_toEndOf="@+id/textView_firstName"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -33,7 +34,7 @@
         android:layout_toEndOf="@id/textView_lastName"
         android:gravity="center"
         android:minWidth="20dp"
-        android:textSize="20sp"
+        android:textSize="15sp"
         app:layout_constraintStart_toEndOf="@+id/textView_lastName"
         app:layout_constraintTop_toTopOf="parent" />
 
