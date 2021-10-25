@@ -74,7 +74,6 @@ public class Settings extends AppCompatActivity {
         TimePicker.OnTimeChangedListener onTimeChangedListener = new TimePicker.OnTimeChangedListener() {
             @Override
             public void onTimeChanged(TimePicker timePicker, int i, int i1) {
-                Log.d("TAG", "Time changed");
                 editor.putInt("hour", tp.getHour());
                 editor.putInt("minute", tp.getMinute());
                 editor.apply();
