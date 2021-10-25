@@ -62,7 +62,7 @@ public class MyService extends Service {
                     c.set(Calendar.MONTH, month);
                     c.set(Calendar.YEAR, year);
 
-                    //Checking if a reservation is "deprecated", if the current date is after the reervation date
+                    //Checking if a reservation is old, and should be deleted
                     if (cal.getTime().after(c.getTime())){
                         deleteReservation(r);
                     } else {
