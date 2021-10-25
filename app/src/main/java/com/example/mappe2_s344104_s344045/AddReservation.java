@@ -81,7 +81,6 @@ public class AddReservation extends AppCompatActivity {
             @Override
             public void onTimeChanged(TimePicker tp, int i, int i1) {
                 time = timePicker.getHour() + ":" + timePicker.getMinute();
-                Log.e("Time", time);
             }
         });
 
@@ -89,7 +88,6 @@ public class AddReservation extends AppCompatActivity {
             @Override
             public void onDateChanged(DatePicker dp, int i, int i1, int i2) {
                 date = datePicker.getDayOfMonth() + "." + (datePicker.getMonth()+1) + "." + datePicker.getYear();
-                Log.e("DATE", date);
             }
         };
         datePicker.init(2000,0,1, onDateChangedListener);

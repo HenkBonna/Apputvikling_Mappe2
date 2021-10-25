@@ -4,7 +4,12 @@ import androidx.room.Database;
 import androidx.room.RoomDatabase;
 import androidx.room.TypeConverters;
 
-@Database(entities = {Friend.class, Restaurant.class, Reservation.class}, version = 1)
+@Database(
+        entities = {Friend.class,
+                Restaurant.class,
+                Reservation.class},
+        version = 2
+)
 
 @TypeConverters({RestaurantConverter.class, FriendConverter.class})
 public abstract class AppDatabase extends RoomDatabase {

@@ -14,6 +14,8 @@ public class Friend {
     private String lastname;
     @ColumnInfo(name = "phone_number")
     private String phone;
+    @ColumnInfo(name = "checked")
+    private Boolean checked;
 
     //We treating our friends like objects here
     public Friend() {
@@ -23,6 +25,7 @@ public class Friend {
         this.firstname = firstname;
         this.lastname = lastname;
         this.phone = phone;
+        checked = false;
     }
 
     public Friend(long _ID, String firstname, String lastname, String phone) {
@@ -30,6 +33,7 @@ public class Friend {
         this.firstname = firstname;
         this.lastname = lastname;
         this.phone = phone;
+        checked = false;
     }
 
     public long get_ID() {
@@ -62,6 +66,14 @@ public class Friend {
 
     public void setPhone(String phone) {
         this.phone = phone;
+    }
+
+    public Boolean getChecked() {
+        return checked;
+    }
+
+    public void setChecked(Boolean checked) {
+        this.checked = checked;
     }
 
     @Override

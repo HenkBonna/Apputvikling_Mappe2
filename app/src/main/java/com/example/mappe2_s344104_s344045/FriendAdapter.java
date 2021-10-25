@@ -2,6 +2,7 @@ package com.example.mappe2_s344104_s344045;
 
 import android.app.Activity;
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -54,8 +55,16 @@ public class FriendAdapter extends ArrayAdapter<Friend> {
                 holder.button_edit = (ImageButton) row.findViewById(R.id.button_edit);
             } else {
                 holder.checkBox = (CheckBox) row.findViewById(R.id.checkBox);
+                holder.checkBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+                    @Override
+                    public void onCheckedChanged(CompoundButton compoundButton, boolean isChecked) {
+                        int getPosition = (Integer) compoundButton.getTag();
+                        friendList.get(getPosition).setChecked(compoundButton.isChecked());
+                    }
+                });
             }
             row.setTag(holder);
+            row.setTag(R.id.checkBox, holder.checkBox);
         }
         else {
             holder = (ViewHolder) row.getTag();
@@ -73,22 +82,21 @@ public class FriendAdapter extends ArrayAdapter<Friend> {
                 }
             });
         } else if (layoutResourceId == R.layout.friend_picker){
-            holder.checkBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-                @Override
-                public void onCheckedChanged(CompoundButton compoundButton, boolean isChecked) {
-                    if (isChecked){
-                        checkedFriends.add(friend);
-                    } else {
-                        checkedFriends.remove(friend);
-                    }
-                }
-            });
+            //int getPosition = (Integer) row.getTag();
+            holder.checkBox.setTag(position);
+            holder.checkBox.setChecked(friendList.get(position).getChecked());
         }
 
         return row;
     }
 
     public List<Friend> getCheckedFriends() {
+        for (Friend f : friendList){
+            if (f.getChecked()){
+                checkedFriends.add(f);
+                f.setChecked(false);
+            }
+        }
         return checkedFriends;
     }
 }

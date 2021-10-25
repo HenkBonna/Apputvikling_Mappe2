@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -11,39 +11,42 @@
         android:layout_height="48dp"
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="4dp"
         android:gravity="center"
         android:minWidth="20dp"
         android:textSize="15sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:text="Firstname"/>
 
     <TextView
         android:id="@+id/textView_lastName"
         android:layout_width="wrap_content"
         android:layout_height="48dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="4dp"
+        android:layout_toEndOf="@+id/textView_firstName"
         android:gravity="center"
         android:minWidth="20dp"
-        android:textSize="15sp"
-        app:layout_constraintStart_toEndOf="@+id/textView_firstName"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:text="Lastname"
+        android:textSize="15sp" />
 
     <TextView
         android:id="@+id/textView_phoneNumber"
         android:layout_width="wrap_content"
         android:layout_height="48dp"
         android:layout_toEndOf="@id/textView_lastName"
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="4dp"
         android:gravity="center"
         android:minWidth="20dp"
         android:textSize="15sp"
-        app:layout_constraintStart_toEndOf="@+id/textView_lastName"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:text="Phone"/>
 
     <CheckBox
         android:id="@+id/checkBox"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="@+id/textView_phoneNumber"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/textView_phoneNumber"
-        app:layout_constraintVertical_bias="0.0" />
-</androidx.constraintlayout.widget.ConstraintLayout>
+        android:layout_marginTop="4dp"
+        android:layout_alignParentEnd="true" />
+</RelativeLayout>
