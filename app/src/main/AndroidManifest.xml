@@ -3,6 +3,9 @@
     package="com.example.mappe2_s344104_s344045">
     <permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
     <uses-permission android:name="android.permission.SEND_SMS"/>
+    <uses-permission android:name="com.example.mappe2_s344104_s344045.permission"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <permission android:name="com.example.mappe2_s344104_s344045.permission" />
 
     <application
         android:allowBackup="true"
@@ -63,6 +66,18 @@
                 <action android:name="android.intent.action.BOOT_COMPLETED"/>
             </intent-filter>
         </receiver>
+
+        <provider
+            android:name="com.example.mappe2_s344104_s344045.Restaurant"
+            android:authorities="com.example.mappe2_s344104_s344045"
+            android:enabled="true"
+            android:exported="true"
+            android:readPermission="com.example.mappe2_s344104_s344045.permission"
+            android:writePermission="com.example.mappe2_s344104_s344045.permission"
+            >
+
+
+        </provider>
 
     </application>
 
