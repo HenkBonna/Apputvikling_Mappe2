@@ -12,6 +12,8 @@ import java.util.List;
 public interface RestaurantDao {
     @Query("Select * FROM Restaurant")
     List<Restaurant> getAll();
+    @Query("SELECT * from Restaurant where _ID =:id")
+    Restaurant get(Long id);
     @Insert
     void insert (Restaurant restaurant);
     @Delete

@@ -4,12 +4,15 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 public class RegisterFriend extends AppCompatActivity {
     EditText editFirstName, editLastName, editPhone;
+    TextView headline;
+    Friend friend;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -17,6 +20,33 @@ public class RegisterFriend extends AppCompatActivity {
         editFirstName = findViewById(R.id.editFirstName);
         editLastName = findViewById(R.id.editLastName);
         editPhone = findViewById(R.id.editTextPhone);
+        headline = findViewById(R.id.addFriendTitle);
+        if (getIntent().getExtras() != null){
+            headline.setText("Rediger venn");
+            Long id = getIntent().getExtras().getLong("friend_id");
+            getFriend(id);
+        }
+    }
+
+    private void getFriend(Long id) {
+        class GetFriend extends AsyncTask<Long, Void, Void>{
+            @Override
+            public Void doInBackground(Long... longs){
+                friend = DatabaseClient.getInstance(getApplicationContext())
+                        .getAppDatabase()
+                        .friendDao()
+                        .get(id);
+                return null;
+            }
+            @Override
+            public void onPostExecute(Void aVoid){
+                editFirstName.setText(friend.getFirstname());
+                editLastName.setText(friend.getLastname());
+                editPhone.setText(friend.getPhone());
+            }
+        }
+        GetFriend getFriend = new GetFriend();
+        getFriend.execute();
     }
 
     public void saveFriend(View view) {
@@ -26,17 +56,26 @@ public class RegisterFriend extends AppCompatActivity {
                 String firstname = editFirstName.getText().toString();
                 String lastname = editLastName.getText().toString();
                 String phone = editPhone.getText().toString();
-                Friend friend = new Friend(firstname, lastname, phone);
-                DatabaseClient.getInstance(getApplicationContext())
-                        .getAppDatabase()
-                        .friendDao()
-                        .insert(friend);
+                if (friend != null){
+                    friend.setFirstname(firstname);
+                    friend.setLastname(lastname);
+                    friend.setPhone(phone);
+                    DatabaseClient.getInstance(getApplicationContext())
+                            .getAppDatabase()
+                            .friendDao()
+                            .update(friend);
+                } else {
+                    friend = new Friend(firstname, lastname, phone);
+                    DatabaseClient.getInstance(getApplicationContext())
+                            .getAppDatabase()
+                            .friendDao()
+                            .insert(friend);
+                }
                 return null;
             }
             @Override
             protected void onPostExecute(Void aVoid){
                 super.onPostExecute(aVoid);
-                Toast.makeText(getApplicationContext(),"Friend saved",Toast.LENGTH_LONG).show();
                 finish();
             }
         }

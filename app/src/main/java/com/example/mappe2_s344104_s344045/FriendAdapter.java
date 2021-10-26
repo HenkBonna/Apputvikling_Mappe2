@@ -2,8 +2,13 @@ package com.example.mappe2_s344104_s344045;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
+import android.os.AsyncTask;
+import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
@@ -11,6 +16,8 @@ import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.ImageButton;
 import com.example.mappe2_s344104_s344045.Friend;
+
+import android.widget.PopupMenu;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -37,6 +44,7 @@ public class FriendAdapter extends ArrayAdapter<Friend> {
         public TextView textView_phoneNumber;
         public ImageButton button_edit;
         public CheckBox checkBox;
+        public PopupMenu popup;
     }
 
     @Override
@@ -53,6 +61,7 @@ public class FriendAdapter extends ArrayAdapter<Friend> {
             holder.textView_phoneNumber = (TextView) row.findViewById(R.id.textView_phoneNumber);
             if (layoutResourceId == R.layout.friend_entry) {
                 holder.button_edit = (ImageButton) row.findViewById(R.id.button_edit);
+                holder.popup = new PopupMenu(getContext(), row);
             } else {
                 holder.checkBox = (CheckBox) row.findViewById(R.id.checkBox);
                 holder.checkBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
@@ -74,11 +83,32 @@ public class FriendAdapter extends ArrayAdapter<Friend> {
         holder.textView_lastName.setText(friend.getLastname());
         String friendPhoneString = "(" + friend.getPhone() + ")";
         holder.textView_phoneNumber.setText(friendPhoneString);
+        ViewHolder finalHolder = holder;
         if (layoutResourceId == R.layout.friend_entry) {
             holder.button_edit.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    Toast.makeText(context, "YOU CLICKED EDIT ON FRIEND WITH ID: " + friend.get_ID() + " ! ", Toast.LENGTH_LONG).show(); //TODO: This
+                    MenuInflater menuInflater = finalHolder.popup.getMenuInflater();
+                    menuInflater.inflate(R.menu.list_menu, finalHolder.popup.getMenu());
+                    finalHolder.popup.show();
+                    finalHolder.popup.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
+                        @Override
+                        public boolean onMenuItemClick(MenuItem menuItem) {
+                            switch (menuItem.getItemId()) {
+                                case R.id.edit_entry:
+                                    Intent i = new Intent(context, RegisterFriend.class);
+                                    Bundle bundle = new Bundle();
+                                    bundle.putLong("friend_id", friend.get_ID());
+                                    i.putExtras(bundle);
+                                    context.startActivity(i);
+                                    break;
+                                case R.id.delete_entry:
+                                    deleteEntry(friend);
+                                    break;
+                            }
+                            return false;
+                        }
+                    });
                 }
             });
         } else if (layoutResourceId == R.layout.friend_picker){
@@ -98,5 +128,24 @@ public class FriendAdapter extends ArrayAdapter<Friend> {
             }
         }
         return checkedFriends;
+    }
+    private void deleteEntry(Friend friend) {
+        class DeleteEntry extends AsyncTask<Friend, Void, Void> {
+            @Override
+            protected Void doInBackground(Friend... friends){
+                DatabaseClient.getInstance(getContext())
+                        .getAppDatabase()
+                        .friendDao()
+                        .delete(friend);
+                return null;
+            }
+            @Override
+            protected void onPostExecute(Void aVoid){
+                remove(friend);
+                notifyDataSetChanged();
+            }
+        }
+        DeleteEntry de = new DeleteEntry();
+        de.execute();
     }
 }

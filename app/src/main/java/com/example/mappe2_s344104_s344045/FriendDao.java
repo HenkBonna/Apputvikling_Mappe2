@@ -12,6 +12,8 @@ import java.util.List;
 public interface FriendDao {
     @Query("Select * from Friend")
     List<Friend> getAll();
+    @Query("SELECT * from Friend where _ID =:id")
+    Friend get(Long id);
     @Insert
     void insert(Friend friend);
     @Delete

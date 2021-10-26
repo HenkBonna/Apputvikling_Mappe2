@@ -64,7 +64,6 @@ public class ReservationAdapter extends ArrayAdapter<Reservation> {
         holder.button_editReservation.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //TODO edit reservation
                 MenuInflater menuInflater = finalHolder.popup.getMenuInflater();
                 menuInflater.inflate(R.menu.list_menu, finalHolder.popup.getMenu());
                 finalHolder.popup.show();
