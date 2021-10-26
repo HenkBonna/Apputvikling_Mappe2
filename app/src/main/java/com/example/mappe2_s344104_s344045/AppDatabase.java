@@ -8,7 +8,7 @@ import androidx.room.TypeConverters;
         entities = {Friend.class,
                 Restaurant.class,
                 Reservation.class},
-        version = 2
+        version = 3
 )
 
 @TypeConverters({RestaurantConverter.class, FriendConverter.class})

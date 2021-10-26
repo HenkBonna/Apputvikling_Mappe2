@@ -12,6 +12,8 @@ import java.util.List;
 public interface ReservationDao {
     @Query("Select * from Reservation")
     List<Reservation> getAll();
+    @Query("Select * From Reservation where _ID =:id")
+    Reservation get(Long id);
     @Insert
     void insert(Reservation r);
     @Delete

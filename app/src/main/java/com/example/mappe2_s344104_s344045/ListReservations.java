@@ -171,24 +171,4 @@ public class ListReservations extends AppCompatActivity {
         adapter = new ReservationAdapter(this, R.layout.reservation_entry, allReservations);
         listView.setAdapter(adapter);
     }
-
-    /*
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_list);
-        fillTable();
-    }
-
-    private void fillTable() {
-        ListView listView = findViewById(R.id.reservationList);
-        //TODO create tableRows and add to tablelayout
-    }
-
-    public void make_reservation(View view) {
-        Intent i = new Intent(view.getContext(), AddReservation.class);
-        startActivity(i);
-        finish();
-    }
-     */
 }

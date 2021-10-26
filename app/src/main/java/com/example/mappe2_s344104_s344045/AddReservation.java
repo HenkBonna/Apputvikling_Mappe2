@@ -23,6 +23,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import java.nio.channels.AsynchronousChannelGroup;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Calendar;
 import java.util.List;
 
@@ -37,6 +38,7 @@ public class AddReservation extends AppCompatActivity {
     private String time;
     private Button button;
     private FriendAdapter adapter;
+    private Reservation reservation;
 
     @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
@@ -55,17 +57,8 @@ public class AddReservation extends AppCompatActivity {
         timePicker.setMinute(0);
         button = findViewById(R.id.dateButton);
         fillSpinners();
-        showFriends();
-        /*listView.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> arg0, View view, int arg2, long arg3){
-                addToReservation(listView.getSelectedItem());
-            }
-            @Override
-            public void onNothingSelected(AdapterView<?> arg0){
 
-            }
-        });*/
+
         restaurants.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> arg0, View view, int arg2, long arg3){
@@ -93,22 +86,70 @@ public class AddReservation extends AppCompatActivity {
         datePicker.init(2000,0,1, onDateChangedListener);
 
         //datePicker.setOnDateChangedListener(onDateChangedListener);
+        if (getIntent().getExtras() != null){
+            Long id = getIntent().getExtras().getLong("reservation_ID");
+            getReservation(id);
+        } else {
+            showFriends();
+        }
+    }
+
+    private void getReservation(Long id) {
+        class GetReservation extends AsyncTask<Long, Void, Void>{
+            @Override
+            public Void doInBackground(Long... longs){
+                reservation = DatabaseClient.getInstance(getApplicationContext())
+                        .getAppDatabase()
+                        .reservationDao()
+                        .get(id);
+                date = reservation.getDate();
+                time = reservation.getTime();
+                restaurant = reservation.getRestaurant();
+                friendList = reservation.getFriends();
+                Log.e("LIST", friendList.toString());
+                String[] splitTime = time.split(":");
+                int hour = Integer.parseInt(splitTime[0]);
+                int minute = Integer.parseInt(splitTime[1]);
+                String[] splitDate = date.split("\\.");
+                int day = Integer.parseInt(splitDate[0]);
+                int month = (Integer.parseInt(splitDate[1])) - 1;
+                int year = Integer.parseInt(splitDate[2]);
+                timePicker.setHour(hour);
+                timePicker.setMinute(minute);
+                datePicker.updateDate(year, month, day);
+                Log.e("RESERVATION", reservation.getFriends().toString());
+                return null;
+            }
+        }
+        GetReservation gr = new GetReservation();
+        gr.execute();
+        showFriends();
     }
 
     public void saveReservation(View view) {
         class SaveReservation extends AsyncTask<Void, Void, Void> {
             @Override
             protected Void doInBackground(Void... voids) {
-                //TODO save this to db
                 time = timePicker.getHour() + ":" + timePicker.getMinute();
                 date = datePicker.getDayOfMonth() + "." + (datePicker.getMonth() + 1) + "." + datePicker.getYear();
                 List<Friend> items = adapter.getCheckedFriends();
                 friendList.setFriends(items);
-                Reservation reservation = new Reservation(restaurant, date, time, friendList);
-                DatabaseClient.getInstance(getApplicationContext())
-                        .getAppDatabase()
-                        .reservationDao()
-                        .insert(reservation);
+                if (reservation != null){
+                    reservation.setFriends(friendList);
+                    reservation.setRestaurant(restaurant);
+                    reservation.setDate(date);
+                    reservation.setTime(time);
+                    DatabaseClient.getInstance(getApplicationContext())
+                            .getAppDatabase()
+                            .reservationDao()
+                            .update(reservation);
+                } else {
+                    reservation = new Reservation(restaurant, date, time, friendList);
+                    DatabaseClient.getInstance(getApplicationContext())
+                            .getAppDatabase()
+                            .reservationDao()
+                            .insert(reservation);
+                }
                 return null;
             }
             @Override
@@ -159,6 +200,15 @@ public class AddReservation extends AppCompatActivity {
         sf.execute();
     }
     public void displayFriends(List<Friend> friends){
+        List<Friend> fs = friendList.getFriends();
+        for (Friend f : fs){
+            for (Friend friend : friends){
+                if (f.get_ID() == friend.get_ID()){
+                    friend.setChecked(true);
+                    break;
+                }
+            }
+        }
         adapter = new FriendAdapter(this,
                 R.layout.friend_picker, friends);
         listView.setAdapter(adapter);
