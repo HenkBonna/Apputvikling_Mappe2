@@ -14,18 +14,29 @@
         android:layout_alignParentTop="true"
         android:gravity="center"
         android:text="RestaurantName"
-        android:textSize="20sp"
+        android:textSize="16sp"
         android:textStyle="bold" />
 
     <TextView
         android:id="@+id/textView_restaurantType"
         android:layout_width="wrap_content"
-        android:layout_height="64dp"
-        android:layout_marginStart="18dp"
-        android:layout_toEndOf="@id/textView_restaurantName"
+        android:layout_height="32dp"
+        android:layout_below="@id/textView_restaurantName"
+        android:layout_marginStart="4dp"
         android:gravity="center"
         android:text="Type"
-        android:textSize="16sp" />
+        android:textSize="14sp" />
+
+    <TextView
+        android:id="@+id/textView_restaurantAddress"
+        android:layout_width="wrap_content"
+        android:layout_height="32dp"
+        android:layout_below="@id/textView_restaurantName"
+        android:layout_marginStart="8dp"
+        android:layout_toEndOf="@id/textView_restaurantType"
+        android:gravity="center"
+        android:text="Address"
+        android:textSize="14sp" />
 
     <TextView
         android:id="@+id/textView_restaurantPhoneNumber"
@@ -35,16 +46,6 @@
         android:layout_toLeftOf="@id/button_editRestaurant"
         android:gravity="center"
         android:text="Phonenumber"
-        android:textSize="20sp" />
-
-    <TextView
-        android:id="@+id/textView_restaurantAddress"
-        android:layout_width="wrap_content"
-        android:layout_height="32dp"
-        android:layout_below="@id/textView_restaurantName"
-        android:layout_marginStart="16dp"
-        android:gravity="center"
-        android:text="Address"
         android:textSize="16sp" />
 
 
