@@ -23,7 +23,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".AddReservation"
+        <activity android:name=".RegisterReservation"
             android:parentActivityName=".ListReservations"
             android:launchMode="singleTop">
 

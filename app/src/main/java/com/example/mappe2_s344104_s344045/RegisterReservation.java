@@ -5,7 +5,6 @@ import android.graphics.Color;
 import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -13,22 +12,15 @@ import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.ListView;
 import android.widget.Spinner;
-import android.widget.TableLayout;
-import android.widget.TableRow;
-import android.widget.TextView;
 import android.widget.TimePicker;
-import android.widget.Toast;
 
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
-import java.nio.channels.AsynchronousChannelGroup;
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Calendar;
 import java.util.List;
 
-public class AddReservation extends AppCompatActivity {
+public class RegisterReservation extends AppCompatActivity {
     private Spinner restaurants;
     private ListView listView;
     private FriendsList friendList;
@@ -113,6 +105,14 @@ public class AddReservation extends AppCompatActivity {
                 startActivity(i);
             }
         });
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        //friendList = new FriendsList();
+        //fillSpinners();
+        //showFriends();
     }
 
     private void getReservation(Long id) {

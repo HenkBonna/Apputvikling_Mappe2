@@ -97,7 +97,8 @@
         <ListView
             android:id="@+id/list_of_friends"
             android:layout_width="match_parent"
-            android:layout_height="100dp">
+            android:layout_height="200dp"
+            android:nestedScrollingEnabled="true">
 
         </ListView>
 
@@ -113,9 +114,12 @@
             android:id="@+id/save_reservation"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:onClick="saveReservation"
             android:layout_gravity="center"
-            android:text="Lagre reservasjon" />
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="16dp"
+            android:onClick="saveReservation"
+            android:text="Lagre reservasjon"
+            android:textSize="16sp" />
 
     </LinearLayout>
 
