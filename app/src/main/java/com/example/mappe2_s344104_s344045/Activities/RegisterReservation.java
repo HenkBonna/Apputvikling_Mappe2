@@ -36,7 +36,6 @@ public class RegisterReservation extends AppCompatActivity {
     private Restaurant restaurant;
     private String date;
     private String time;
-    private Button button;
     private Button addRestaurantButton;
     private Button addFriendButton;
     private FriendAdapter adapter;
@@ -62,7 +61,6 @@ public class RegisterReservation extends AppCompatActivity {
         timePicker.setIs24HourView(true);
         timePicker.setHour(12);
         timePicker.setMinute(0);
-        //button = findViewById(R.id.dateButton);
         fillSpinners();
 
 
@@ -249,15 +247,5 @@ public class RegisterReservation extends AppCompatActivity {
         adapter = new FriendAdapter(this,
                 R.layout.friend_picker, friends);
         listView.setAdapter(adapter);
-    }
-
-    public void switchPicker(View view) {
-        if (datePicker.getVisibility() == View.VISIBLE) {
-            datePicker.setVisibility(View.INVISIBLE);
-            timePicker.setVisibility(View.VISIBLE);
-        } else {
-            datePicker.setVisibility(View.VISIBLE);
-            timePicker.setVisibility(View.INVISIBLE);
-        }
     }
 }
