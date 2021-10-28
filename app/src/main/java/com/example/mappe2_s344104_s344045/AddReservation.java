@@ -127,7 +127,6 @@ public class AddReservation extends AppCompatActivity {
                 time = reservation.getTime();
                 restaurant = reservation.getRestaurant();
                 friendList = reservation.getFriends();
-                Log.e("LIST", friendList.toString());
                 String[] splitTime = time.split(":");
                 int hour = Integer.parseInt(splitTime[0]);
                 int minute = Integer.parseInt(splitTime[1]);
@@ -138,7 +137,6 @@ public class AddReservation extends AppCompatActivity {
                 timePicker.setHour(hour);
                 timePicker.setMinute(minute);
                 datePicker.updateDate(year, month, day);
-                Log.e("RESERVATION", reservation.getFriends().toString());
                 return null;
             }
         }
