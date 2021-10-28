@@ -28,7 +28,7 @@ public class MyService extends Service {
     @Override
     public void onCreate(){
         super.onCreate();
-        settings = getSharedPreferences(MainActivity.PREFS, MODE_PRIVATE);
+        settings = getSharedPreferences(ListReservations.PREFS, MODE_PRIVATE);
     }
     @Nullable
     @Override
@@ -91,7 +91,6 @@ public class MyService extends Service {
                             FriendsList friendsList = r.getFriends();
                             List<Friend> friends = friendsList.getFriends();
 
-                            Log.e("MESSAGE", message);
                             for (Friend f : friends) {
                                 String number = f.getPhone();
                                 smsManager.sendTextMessage(number,

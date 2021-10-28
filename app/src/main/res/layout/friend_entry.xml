@@ -3,13 +3,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="5dp"
-    tools:context=".MainActivity">
+    android:padding="5dp">
+    <!--tools:context=".MainActivity"-->
 
     <TextView
         android:id="@+id/textView_firstName"
         android:layout_width="wrap_content"
-        android:layout_height="64dp"
+        android:layout_height="32dp"
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
         android:gravity="center"
@@ -19,7 +19,7 @@
     <TextView
         android:id="@+id/textView_lastName"
         android:layout_width="wrap_content"
-        android:layout_height="64dp"
+        android:layout_height="32dp"
         android:layout_marginStart="4dp"
         android:layout_toEndOf="@id/textView_firstName"
         android:gravity="center"
@@ -29,9 +29,10 @@
     <TextView
         android:id="@+id/textView_phoneNumber"
         android:layout_width="wrap_content"
-        android:layout_height="64dp"
-        android:layout_marginStart="16dp"
-        android:layout_toLeftOf="@id/button_edit"
+        android:layout_height="32dp"
+        android:layout_below="@+id/textView_firstName"
+        android:layout_alignParentLeft="true"
+        android:layout_marginTop="1dp"
         android:gravity="center"
         android:text="Phonenumber"
         android:textSize="16sp" />
