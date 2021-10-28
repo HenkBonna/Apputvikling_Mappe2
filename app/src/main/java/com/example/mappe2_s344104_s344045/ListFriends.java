@@ -28,9 +28,6 @@ public class ListFriends extends AppCompatActivity {
 
     FriendAdapter adapter;
 
-    boolean findABetterWayOfCheckingThis = false;
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -47,24 +44,7 @@ public class ListFriends extends AppCompatActivity {
 
         nav.setSelectedItemId(R.id.navigation_friends);
 
-        if (!findABetterWayOfCheckingThis) {
-            /*
-            saveFriend("Espen", "Askeladden", "12345678");
-            saveFriend("Per", "Askeladden", "12543678");
-            saveFriend("Pål", "Askeladden", "12365678");
-            saveFriend("Marina", "Diamandis", "22345678");
-            saveFriend("Djivan", "Gasparyan", "25252525");
-            saveFriend("Babatunde", "Olatunji", "47474747");
-            saveFriend("Annie", "Clark", "15151515");
-            saveFriend("Philip", "Glass", "35353535");
-            saveFriend("Ali", "Farka", "11111111");
-            saveFriend("Ahmad", "Jamal", "73735356");
-            saveFriend("Gerard", "Schwarz", "35353535");
-            */
-            showFriends();
-            findABetterWayOfCheckingThis = true;
-        }
-
+        showFriends();
 
         nav.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
             @Override

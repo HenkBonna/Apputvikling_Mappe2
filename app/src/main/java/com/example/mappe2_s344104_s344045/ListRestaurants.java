@@ -47,20 +47,7 @@ public class ListRestaurants extends AppCompatActivity {
         textView.setText("Restauranter");
         nav.setSelectedItemId(R.id.navigation_restaurants);
 
-        // TODO: I've seeded some info here. If you uncomment these, it will duplicate upon several
-        // TODO: runs. This will obviously be handled differently eventually.
-        if (!findABetterWayOfCheckingThis) {
-            /*
-            saveRestaurant("Guagino's Pizzeria","Italo Blvd. 24", "Italian", "444 444");
-            saveRestaurant("Sander Kebab","Oslovein 12", "Nattmat", "4224 444");
-            saveRestaurant("Pa99++","Universitetsgate ", "Café", "222 444");
-            saveRestaurant("Alonzoz's Pizzeria","Italo Blvd. 21", "Italian", "555 555");
-            saveRestaurant("Gabagool","Italo Blvd. 10", "Italian", "222 1212");
-            saveRestaurant("Café Mehren","Bøhmergaten 12", "Café", "42 4114");
-            */
-            showRestaurants();
-            findABetterWayOfCheckingThis = true;
-        }
+        showRestaurants();
 
         nav.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
             @Override

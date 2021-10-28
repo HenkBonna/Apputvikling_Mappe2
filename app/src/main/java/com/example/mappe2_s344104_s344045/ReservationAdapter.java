@@ -22,6 +22,7 @@ public class ReservationAdapter extends ArrayAdapter<Reservation> {
     private Context context;
     private int layoutResourceId;
     private List<Reservation> reservations;
+    MenuInflater menuInflater;
 
     public ReservationAdapter(Context context, int layoutResourceId, List<Reservation> reservations){
         super(context, layoutResourceId, reservations);
@@ -64,7 +65,10 @@ public class ReservationAdapter extends ArrayAdapter<Reservation> {
         holder.button_editReservation.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                MenuInflater menuInflater = finalHolder.popup.getMenuInflater();
+                if (menuInflater == null){
+                    menuInflater = finalHolder.popup.getMenuInflater();
+                }
+                finalHolder.popup.getMenu().clear();
                 menuInflater.inflate(R.menu.list_menu, finalHolder.popup.getMenu());
                 finalHolder.popup.show();
                 finalHolder.popup.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {

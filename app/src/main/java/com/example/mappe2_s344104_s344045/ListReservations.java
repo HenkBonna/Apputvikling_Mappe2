@@ -68,7 +68,7 @@ public class ListReservations extends AppCompatActivity {
         imgBtn = (ImageButton) findViewById(R.id.settings_btn);
 
         textView.setText("Reservasjoner");
-
+        
         nav.setSelectedItemId(R.id.navigation_reservations);
 
         nav.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
