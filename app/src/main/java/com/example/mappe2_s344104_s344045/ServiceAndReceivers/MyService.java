@@ -59,7 +59,7 @@ public class MyService extends Service {
         }
         return super.onStartCommand(intent, flags, startId);
     }
-    
+
     public String checkReservations(){
         class CheckReservations extends AsyncTask<Void, Void, String>{
             String message;
