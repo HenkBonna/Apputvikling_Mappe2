@@ -4,21 +4,6 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="../../../../../../../layout/custom_preview.xml" value="0.13177083333333334" />
-        <entry key="..\:/GitHub/Apputvikling_Mappe2/app/src/main/res/layout/activity_list.xml" value="0.36666666666666664" />
-        <entry key="..\:/GitHub/Apputvikling_Mappe2/app/src/main/res/layout/activity_main.xml" value="0.36666666666666664" />
-        <entry key="..\:/GitHub/Apputvikling_Mappe2/app/src/main/res/layout/activity_make_reservation.xml" value="0.33" />
-        <entry key="..\:/GitHub/Apputvikling_Mappe2/app/src/main/res/layout/activity_register_friend.xml" value="0.228125" />
-        <entry key="..\:/GitHub/Apputvikling_Mappe2/app/src/main/res/layout/activity_register_restaurant.xml" value="0.36666666666666664" />
-        <entry key="..\:/GitHub/Apputvikling_Mappe2/app/src/main/res/layout/activity_settings.xml" value="0.36666666666666664" />
-        <entry key="..\:/GitHub/Apputvikling_Mappe2/app/src/main/res/layout/friend_entry.xml" value="0.36666666666666664" />
-        <entry key="..\:/GitHub/Apputvikling_Mappe2/app/src/main/res/layout/friend_picker.xml" value="0.36666666666666664" />
-        <entry key="..\:/GitHub/Apputvikling_Mappe2/app/src/main/res/layout/list_item.xml" value="0.228125" />
-        <entry key="..\:/GitHub/Apputvikling_Mappe2/app/src/main/res/layout/new_layout.xml" value="0.36666666666666664" />
-        <entry key="..\:/GitHub/Apputvikling_Mappe2/app/src/main/res/layout/reservation_entry.xml" value="0.5" />
-        <entry key="..\:/GitHub/Apputvikling_Mappe2/app/src/main/res/layout/restaurant_entry.xml" value="0.36666666666666664" />
-        <entry key="..\:/GitHub/Apputvikling_Mappe2/app/src/main/res/layout/spinner_item.xml" value="0.228125" />
-        <entry key="..\:/GitHub/Apputvikling_Mappe2/app/src/main/res/menu/bottom_nav_menu.xml" value="0.36666666666666664" />
-        <entry key="..\:/GitHub/Apputvikling_Mappe2/app/src/main/res/menu/list_menu.xml" value="0.36666666666666664" />
         <entry key="app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.25052083333333336" />
         <entry key="app/src/main/res/drawable/ic_baseline_add_24.xml" value="0.25052083333333336" />
         <entry key="app/src/main/res/drawable/ic_baseline_add_32.xml" value="0.25052083333333336" />
@@ -31,22 +16,26 @@
         <entry key="app/src/main/res/drawable/ic_home_black_24dp.xml" value="0.17592592592592593" />
         <entry key="app/src/main/res/drawable/ic_launcher_background.xml" value="0.25052083333333336" />
         <entry key="app/src/main/res/drawable/ic_notifications_black_24dp.xml" value="0.17592592592592593" />
-        <entry key="app/src/main/res/layout/activity_list.xml" value="0.18" />
+        <entry key="app/src/main/res/layout/activity_list.xml" value="0.25" />
         <entry key="app/src/main/res/layout/activity_list_friends.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_list_reservations.xml" value="0.11666666666666667" />
         <entry key="app/src/main/res/layout/activity_list_restaurants.xml" value="0.18" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.17314814814814813" />
-        <entry key="app/src/main/res/layout/activity_make_reservation.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/activity_make_reservation.xml" value="0.22" />
         <entry key="app/src/main/res/layout/activity_register_friend.xml" value="0.17314814814814813" />
         <entry key="app/src/main/res/layout/activity_register_restaurant.xml" value="0.17314814814814813" />
         <entry key="app/src/main/res/layout/activity_settings.xml" value="0.11666666666666667" />
         <entry key="app/src/main/res/layout/fragment_dashboard.xml" value="0.11574074074074074" />
         <entry key="app/src/main/res/layout/fragment_home.xml" value="0.11574074074074074" />
         <entry key="app/src/main/res/layout/fragment_notifications.xml" value="0.23076923076923078" />
+        <entry key="app/src/main/res/layout/friend_entry.xml" value="0.234375" />
+        <entry key="app/src/main/res/layout/list_entry.xml" value="0.33" />
         <entry key="app/src/main/res/layout/list_fragment.xml" value="0.16666666666666666" />
         <entry key="app/src/main/res/layout/list_item.xml" value="0.11666666666666667" />
         <entry key="app/src/main/res/layout/menu_fragment.xml" value="0.16666666666666666" />
         <entry key="app/src/main/res/layout/new_layout.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/reservation_entry.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/restaurant_entry.xml" value="0.33" />
         <entry key="app/src/main/res/menu/bottom_nav_menu.xml" value="0.23076923076923078" />
       </map>
     </option>

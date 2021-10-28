@@ -68,9 +68,7 @@ public class ListReservations extends AppCompatActivity {
         imgBtn = (ImageButton) findViewById(R.id.settings_btn);
 
         textView.setText("Reservasjoner");
-
-        // TODO: Look into ArrayAdapters, to create better-looking listitems: vogella.com/tutorials/AndroidListView/article.html
-
+        
         nav.setSelectedItemId(R.id.navigation_reservations);
 
         nav.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {

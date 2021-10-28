@@ -1,5 +1,6 @@
 package com.example.mappe2_s344104_s344045;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.AsyncTask;
 import android.os.Build;
@@ -37,6 +38,8 @@ public class AddReservation extends AppCompatActivity {
     private String date;
     private String time;
     private Button button;
+    private Button addRestaurantButton;
+    private Button addFriendButton;
     private FriendAdapter adapter;
     private Reservation reservation;
 
@@ -50,12 +53,14 @@ public class AddReservation extends AppCompatActivity {
         listView = findViewById(R.id.list_of_friends);
         datePicker = findViewById(R.id.datePicker);
         timePicker = findViewById(R.id.reservationDate);
+        addRestaurantButton = findViewById(R.id.add_restaurant_button);
+        addFriendButton = findViewById(R.id.add_friend_button);
         friendList = new FriendsList();
         datePicker.setMinDate(Calendar.getInstance().getTimeInMillis());
         timePicker.setIs24HourView(true);
         timePicker.setHour(12);
         timePicker.setMinute(0);
-        button = findViewById(R.id.dateButton);
+        //button = findViewById(R.id.dateButton);
         fillSpinners();
 
 
@@ -92,6 +97,22 @@ public class AddReservation extends AppCompatActivity {
         } else {
             showFriends();
         }
+
+        addFriendButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(view.getContext(), RegisterFriend.class);
+                startActivity(i);
+            }
+        });
+
+        addRestaurantButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(view.getContext(), RegisterRestaurant.class);
+                startActivity(i);
+            }
+        });
     }
 
     private void getReservation(Long id) {

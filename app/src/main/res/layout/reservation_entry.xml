@@ -13,7 +13,7 @@
         android:layout_alignParentTop="true"
         android:gravity="center"
         android:text="Restaurant"
-        android:textSize="20sp" />
+        android:textSize="16sp" />
 
     <TextView
         android:id="@+id/textView_date"
@@ -23,7 +23,7 @@
         android:layout_toStartOf="@+id/textView_time"
         android:gravity="center"
         android:text="Date"
-        android:textSize="20sp" />
+        android:textSize="16sp" />
 
     <TextView
         android:id="@+id/textView_time"
@@ -34,7 +34,7 @@
         android:layout_toStartOf="@+id/button_editReservation"
         android:gravity="center"
         android:text="Time"
-        android:textSize="20sp" />
+        android:textSize="16sp" />
 
     <ImageButton
         android:id="@+id/button_editReservation"
