@@ -1,5 +1,8 @@
 package com.example.mappe2_s344104_s344045;
 
+import android.app.Notification;
+import android.app.NotificationManager;
+import android.app.PendingIntent;
 import android.app.Service;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -10,6 +13,7 @@ import android.util.Log;
 import android.widget.Toast;
 
 import androidx.annotation.Nullable;
+import androidx.core.app.NotificationCompat;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -35,6 +39,19 @@ public class MyService extends Service {
     @Override
     public int onStartCommand(Intent intent, int flags, int startId){
         checkReservations();
+
+        //Toast.makeText(getApplicationContext(), "I MinService", Toast.LENGTH_SHORT).show();
+        NotificationManager notificationManager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
+        Intent i = new Intent(this, ListReservations.class);
+        PendingIntent pendingIntent = PendingIntent.getActivity(this, 0, i, 0);
+        Notification notification = new NotificationCompat.Builder(this,"22")
+                .setContentTitle("MinNotifikasjon")
+                .setContentText("Tekst")
+                .setSmallIcon(R.mipmap.ic_launcher)
+                .setContentIntent(pendingIntent)
+                .build();
+        notification.flags |= Notification.FLAG_AUTO_CANCEL;
+        notificationManager.notify(0, notification);
 
         return super.onStartCommand(intent, flags, startId);
     }

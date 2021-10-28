@@ -1,6 +1,8 @@
 package com.example.mappe2_s344104_s344045;
 
 import android.Manifest;
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
@@ -8,6 +10,7 @@ import android.content.IntentFilter;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.os.AsyncTask;
+import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
@@ -125,6 +128,7 @@ public class ListReservations extends AppCompatActivity {
         }
 
         showReservations();
+        createNotificationChannel();
     }
     @Override
     public void onResume(){
@@ -171,4 +175,15 @@ public class ListReservations extends AppCompatActivity {
         adapter = new ReservationAdapter(this, R.layout.reservation_entry, allReservations);
         listView.setAdapter(adapter);
     }
+
+    private void createNotificationChannel(){
+        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.O){
+            CharSequence name = "ChannelName@181";
+            String description = " ChannelDesc@182";
+            int importance = NotificationManager.IMPORTANCE_DEFAULT;
+            NotificationChannel channel = new NotificationChannel("22", name, importance);
+            channel.setDescription(description);
+        }
+    }
+
 }
