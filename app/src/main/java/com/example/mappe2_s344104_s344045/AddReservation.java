@@ -149,7 +149,15 @@ public class AddReservation extends AppCompatActivity {
         class SaveReservation extends AsyncTask<Void, Void, Void> {
             @Override
             protected Void doInBackground(Void... voids) {
-                time = timePicker.getHour() + ":" + timePicker.getMinute();
+                if (timePicker.getHour() < 10){
+                    time = "0" + timePicker.getHour() + ":";
+                } else {
+                    time = timePicker.getHour() + ":";
+                }
+                if (timePicker.getMinute() < 10){
+                    time += "0";
+                }
+                time += timePicker.getMinute();
                 date = datePicker.getDayOfMonth() + "." + (datePicker.getMonth() + 1) + "." + datePicker.getYear();
                 List<Friend> items = adapter.getCheckedFriends();
                 friendList.setFriends(items);

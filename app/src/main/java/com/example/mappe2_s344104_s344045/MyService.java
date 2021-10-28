@@ -42,20 +42,22 @@ public class MyService extends Service {
         String message = checkReservations();
 
         //Toast.makeText(getApplicationContext(), "I MinService", Toast.LENGTH_SHORT).show();
-        NotificationManager notificationManager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
-        Intent i = new Intent(this, ListReservations.class);
-        PendingIntent pendingIntent = PendingIntent.getActivity(this, 0, i, 0);
-        Notification notification = new NotificationCompat.Builder(this,"22")
-                .setContentTitle("Reservasjon!")
-                .setContentText(message)
-                .setSmallIcon(R.mipmap.restaurant)
-                .setContentIntent(pendingIntent)
-                .build();
-        notification.flags |= Notification.FLAG_AUTO_CANCEL;
-        notificationManager.notify(0, notification);
-
+        if (message != null) {
+            NotificationManager notificationManager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
+            Intent i = new Intent(this, ListReservations.class);
+            PendingIntent pendingIntent = PendingIntent.getActivity(this, 0, i, 0);
+            Notification notification = new NotificationCompat.Builder(this, "22")
+                    .setContentTitle("Reservasjon!")
+                    .setContentText(message)
+                    .setSmallIcon(R.mipmap.restaurant)
+                    .setContentIntent(pendingIntent)
+                    .build();
+            notification.flags |= Notification.FLAG_AUTO_CANCEL;
+            notificationManager.notify(0, notification);
+        }
         return super.onStartCommand(intent, flags, startId);
     }
+    
     public String checkReservations(){
         class CheckReservations extends AsyncTask<Void, Void, String>{
             String message;
