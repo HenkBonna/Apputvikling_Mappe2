@@ -36,7 +36,6 @@ public class RegisterReservation extends AppCompatActivity {
     private Restaurant restaurant;
     private String date;
     private String time;
-    private Button button;
     private Button addRestaurantButton;
     private Button addFriendButton;
     private FriendAdapter adapter;
@@ -58,10 +57,12 @@ public class RegisterReservation extends AppCompatActivity {
         friendList = new FriendsList();
 
         datePicker.setMinDate(Calendar.getInstance().getTimeInMillis());
+        Calendar cal = Calendar.getInstance();
+        cal.set(Calendar.YEAR, (cal.get(Calendar.YEAR) +1));
+        datePicker.setMaxDate(cal.getTimeInMillis());
         timePicker.setIs24HourView(true);
         timePicker.setHour(12);
         timePicker.setMinute(0);
-        //button = findViewById(R.id.dateButton);
         fillSpinners();
 
 

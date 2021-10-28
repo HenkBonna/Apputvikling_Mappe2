@@ -41,7 +41,9 @@ public class MyService extends Service {
 
     @Override
     public int onStartCommand(Intent intent, int flags, int startId){
-        String message = checkReservations();
+        checkReservations();
+        String message = settings.getString("standard_message",
+                "Husk reservasjon i kveld! ");
 
         if (message != null) {
             NotificationManager notificationManager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
@@ -59,11 +61,11 @@ public class MyService extends Service {
         return super.onStartCommand(intent, flags, startId);
     }
 
-    public String checkReservations(){
-        class CheckReservations extends AsyncTask<Void, Void, String>{
+    public void checkReservations(){
+        class CheckReservations extends AsyncTask<Void, Void, Void>{
             String message;
             @Override
-            protected String doInBackground(Void... voids){
+            protected Void doInBackground(Void... voids){
                 SmsManager smsManager = SmsManager.getDefault();
                 List<Reservation> reservations = DatabaseClient.getInstance(getApplicationContext()).getAppDatabase()
                         .reservationDao()
@@ -109,20 +111,11 @@ public class MyService extends Service {
                     }
                 }
 
-                return message;
+                return null;
             }
         }
         CheckReservations cr = new CheckReservations();
-        AsyncTask<Void, Void, String> task = cr.execute();
-        String message = null;
-        try {
-            message = task.get();
-        } catch (ExecutionException e) {
-            e.printStackTrace();
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-        return message;
+        cr.execute();
     }
 
     private void deleteReservation(Reservation r) {
