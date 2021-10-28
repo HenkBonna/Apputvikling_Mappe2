@@ -14,7 +14,8 @@
         android:layout_alignParentTop="true"
         android:gravity="center"
         android:text="Firstname"
-        android:textSize="16sp" />
+        android:textSize="16sp"
+        android:textStyle="bold" />
 
     <TextView
         android:id="@+id/textView_lastName"
@@ -24,7 +25,8 @@
         android:layout_toEndOf="@id/textView_firstName"
         android:gravity="center"
         android:text="Lastname"
-        android:textSize="16sp" />
+        android:textSize="16sp"
+        android:textStyle="bold" />
 
     <TextView
         android:id="@+id/textView_phoneNumber"
