@@ -56,6 +56,9 @@ public class RegisterReservation extends AppCompatActivity {
         addFriendButton = findViewById(R.id.add_friend_button);
         friendList = new FriendsList();
         datePicker.setMinDate(Calendar.getInstance().getTimeInMillis());
+        Calendar cal = Calendar.getInstance();
+        cal.set(Calendar.YEAR, (cal.get(Calendar.YEAR) +1));
+        datePicker.setMaxDate(cal.getTimeInMillis());
         timePicker.setIs24HourView(true);
         timePicker.setHour(12);
         timePicker.setMinute(0);
