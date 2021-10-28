@@ -36,8 +36,6 @@ public class RegisterReservation extends AppCompatActivity {
     private Restaurant restaurant;
     private String date;
     private String time;
-    private Button addRestaurantButton;
-    private Button addFriendButton;
     private FriendAdapter adapter;
     private Reservation reservation;
 
@@ -51,8 +49,6 @@ public class RegisterReservation extends AppCompatActivity {
         listView = findViewById(R.id.list_of_friends);
         datePicker = findViewById(R.id.datePicker);
         timePicker = findViewById(R.id.reservationDate);
-        addRestaurantButton = findViewById(R.id.add_restaurant_button);
-        addFriendButton = findViewById(R.id.add_friend_button);
 
         friendList = new FriendsList();
 
@@ -99,22 +95,6 @@ public class RegisterReservation extends AppCompatActivity {
         } else {
             showFriends();
         }
-
-        addFriendButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent i = new Intent(view.getContext(), RegisterFriend.class);
-                startActivity(i);
-            }
-        });
-
-        addRestaurantButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent i = new Intent(view.getContext(), RegisterRestaurant.class);
-                startActivity(i);
-            }
-        });
     }
 
     @Override
