@@ -54,7 +54,9 @@ public class RegisterReservation extends AppCompatActivity {
         timePicker = findViewById(R.id.reservationDate);
         addRestaurantButton = findViewById(R.id.add_restaurant_button);
         addFriendButton = findViewById(R.id.add_friend_button);
+
         friendList = new FriendsList();
+
         datePicker.setMinDate(Calendar.getInstance().getTimeInMillis());
         timePicker.setIs24HourView(true);
         timePicker.setHour(12);
@@ -117,9 +119,6 @@ public class RegisterReservation extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        //friendList = new FriendsList();
-        //fillSpinners();
-        //showFriends();
     }
 
     private void getReservation(Long id) {
@@ -217,7 +216,7 @@ public class RegisterReservation extends AppCompatActivity {
         fr.execute();
     }
 
-    private void showFriends(){
+    public void showFriends(){
         class ShowFriends extends AsyncTask<Void, Void, List<Friend>>{
             @Override
             protected List<Friend> doInBackground(Void... voids){
@@ -246,15 +245,5 @@ public class RegisterReservation extends AppCompatActivity {
         adapter = new FriendAdapter(this,
                 R.layout.friend_picker, friends);
         listView.setAdapter(adapter);
-    }
-
-    public void switchPicker(View view) {
-        if (datePicker.getVisibility() == View.VISIBLE) {
-            datePicker.setVisibility(View.INVISIBLE);
-            timePicker.setVisibility(View.VISIBLE);
-        } else {
-            datePicker.setVisibility(View.VISIBLE);
-            timePicker.setVisibility(View.INVISIBLE);
-        }
     }
 }

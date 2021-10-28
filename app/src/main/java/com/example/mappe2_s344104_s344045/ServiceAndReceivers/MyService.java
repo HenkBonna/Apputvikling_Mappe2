@@ -43,7 +43,6 @@ public class MyService extends Service {
     public int onStartCommand(Intent intent, int flags, int startId){
         String message = checkReservations();
 
-        //Toast.makeText(getApplicationContext(), "I MinService", Toast.LENGTH_SHORT).show();
         if (message != null) {
             NotificationManager notificationManager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
             Intent i = new Intent(this, ListReservations.class);

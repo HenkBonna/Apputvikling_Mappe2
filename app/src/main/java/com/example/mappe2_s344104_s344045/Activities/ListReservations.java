@@ -55,7 +55,6 @@ public class ListReservations extends AppCompatActivity {
         db = new DBHandler(this);
         settingsPref = getSharedPreferences(PREFS, MODE_PRIVATE);
         editor = settingsPref.edit();
-        //startService(new Intent(this, MyService.class));
 
         textView = (TextView) findViewById(R.id.header);
         listView = (ListView) findViewById(R.id.listView);
@@ -77,9 +76,6 @@ public class ListReservations extends AppCompatActivity {
                         finish();
                         break;
                     case "Reservasjoner":
-                        //Intent i2 = new Intent(ListReservations.this, ListReservations.class);
-                        //startActivity(i2);
-                        //finish();
                         break;
                     case "Restauranter":
                         Intent i3 = new Intent(ListReservations.this, ListRestaurants.class);
@@ -96,8 +92,6 @@ public class ListReservations extends AppCompatActivity {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //saveFriend();
-                //showFriends();
                 Intent i = new Intent(view.getContext(), RegisterReservation.class); //TODO: Undo this thingy
                 startActivity(i);
             }

@@ -64,9 +64,6 @@ public class ListRestaurants extends AppCompatActivity {
                         finish();
                         break;
                     case "Restauranter":
-                        //Intent i3 = new Intent(ListFriends.this, ListRestaurants.class);
-                        //startActivity(i3);
-                        //finish();
                         break;
                     default:
                         break;
@@ -108,15 +105,6 @@ public class ListRestaurants extends AppCompatActivity {
             @Override
             protected void onPostExecute(List<Restaurant> allRestaurants){
                 super.onPostExecute(allRestaurants);
-
-                // REDUNDANT //////
-                String out="";
-                for (Restaurant r : allRestaurants){
-                    out = r.getName() + ", " + r.getAddress() + " (" + r.getPhone() + ") " + r.getType();
-                }
-                //textView.setText(out);
-                System.out.println("RESULTAT: "+ out);
-                //////////////////
                 displayRestaurants(allRestaurants);
             }
         }
