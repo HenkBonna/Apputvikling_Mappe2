@@ -1,10 +1,9 @@
-package com.example.mappe2_s344104_s344045;
+package com.example.mappe2_s344104_s344045.Models;
 
 import android.util.Log;
 
 import androidx.room.TypeConverter;
 
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;

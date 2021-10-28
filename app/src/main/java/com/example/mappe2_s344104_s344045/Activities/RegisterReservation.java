@@ -1,7 +1,6 @@
-package com.example.mappe2_s344104_s344045;
+package com.example.mappe2_s344104_s344045.Activities;
 
 import android.content.Intent;
-import android.graphics.Color;
 import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
@@ -16,6 +15,14 @@ import android.widget.TimePicker;
 
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.example.mappe2_s344104_s344045.Adapters.FriendAdapter;
+import com.example.mappe2_s344104_s344045.Database.DatabaseClient;
+import com.example.mappe2_s344104_s344045.Models.Friend;
+import com.example.mappe2_s344104_s344045.Models.FriendsList;
+import com.example.mappe2_s344104_s344045.R;
+import com.example.mappe2_s344104_s344045.Models.Reservation;
+import com.example.mappe2_s344104_s344045.Models.Restaurant;
 
 import java.util.Calendar;
 import java.util.List;

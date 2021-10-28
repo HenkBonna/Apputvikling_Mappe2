@@ -1,4 +1,4 @@
-package com.example.mappe2_s344104_s344045;
+package com.example.mappe2_s344104_s344045.ServiceAndReceivers;
 
 import android.app.Notification;
 import android.app.NotificationManager;
@@ -10,18 +10,20 @@ import android.os.AsyncTask;
 import android.os.IBinder;
 import android.telephony.SmsManager;
 import android.util.Log;
-import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.core.app.NotificationCompat;
 
-import java.text.DateFormat;
+import com.example.mappe2_s344104_s344045.Database.DatabaseClient;
+import com.example.mappe2_s344104_s344045.Models.Friend;
+import com.example.mappe2_s344104_s344045.Models.FriendsList;
+import com.example.mappe2_s344104_s344045.Activities.ListReservations;
+import com.example.mappe2_s344104_s344045.R;
+import com.example.mappe2_s344104_s344045.Models.Reservation;
+
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
-import java.util.Date;
 import java.util.List;
-import java.util.Locale;
-import java.util.TimeZone;
 import java.util.concurrent.ExecutionException;
 
 public class MyService extends Service {

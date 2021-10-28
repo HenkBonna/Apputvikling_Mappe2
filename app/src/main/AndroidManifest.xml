@@ -15,7 +15,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Mappe2">
         <activity
-            android:name=".ListReservations"
+            android:name=".Activities.ListReservations"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -23,43 +23,43 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".RegisterReservation"
-            android:parentActivityName=".ListReservations"
+        <activity android:name=".Activities.RegisterReservation"
+            android:parentActivityName=".Activities.ListReservations"
             android:launchMode="singleTop">
 
         </activity>
-        <activity android:name=".ListFriends"
-            android:parentActivityName=".ListReservations"
-            android:launchMode="singleTop">
-
-        </activity>
-
-        <activity android:name=".ListRestaurants"
-            android:parentActivityName=".ListReservations"
-            android:launchMode="singleTop">
-
-        </activity>
-        <activity android:name=".RegisterFriend"
-            android:parentActivityName=".ListReservations"
-            android:launchMode="singleTop">
-
-        </activity>
-        <activity android:name=".RegisterRestaurant"
-            android:parentActivityName=".ListReservations"
-            android:launchMode="singleTop">
-
-        </activity>
-        <activity android:name=".Settings"
-            android:parentActivityName=".ListReservations"
+        <activity android:name=".Activities.ListFriends"
+            android:parentActivityName=".Activities.ListReservations"
             android:launchMode="singleTop">
 
         </activity>
 
-        <service android:name="com.example.mappe2_s344104_s344045.PeriodicService"/>
+        <activity android:name=".Activities.ListRestaurants"
+            android:parentActivityName=".Activities.ListReservations"
+            android:launchMode="singleTop">
 
-        <service android:name="com.example.mappe2_s344104_s344045.MyService"/>
+        </activity>
+        <activity android:name=".Activities.RegisterFriend"
+            android:parentActivityName=".Activities.ListReservations"
+            android:launchMode="singleTop">
 
-        <receiver android:name=".MyBroadcastReceiver" android:exported="true" android:enabled="true"
+        </activity>
+        <activity android:name=".Activities.RegisterRestaurant"
+            android:parentActivityName=".Activities.ListReservations"
+            android:launchMode="singleTop">
+
+        </activity>
+        <activity android:name=".Activities.Settings"
+            android:parentActivityName=".Activities.ListReservations"
+            android:launchMode="singleTop">
+
+        </activity>
+
+        <service android:name="com.example.mappe2_s344104_s344045.ServiceAndReceivers.PeriodicService"/>
+
+        <service android:name="com.example.mappe2_s344104_s344045.ServiceAndReceivers.MyService"/>
+
+        <receiver android:name=".ServiceAndReceivers.MyBroadcastReceiver" android:exported="true" android:enabled="true"
             android:permission="android.permission.SEND_SMS">
             <intent-filter>
                 <action android:name="MY_BROADCAST"/>
@@ -68,7 +68,7 @@
         </receiver>
 
         <provider
-            android:name="com.example.mappe2_s344104_s344045.Restaurant"
+            android:name="com.example.mappe2_s344104_s344045.Models.Restaurant"
             android:authorities="com.example.mappe2_s344104_s344045"
             android:enabled="true"
             android:exported="true"

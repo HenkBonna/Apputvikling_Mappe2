@@ -1,4 +1,4 @@
-package com.example.mappe2_s344104_s344045;
+package com.example.mappe2_s344104_s344045.Models;
 
 import androidx.room.Dao;
 import androidx.room.Delete;

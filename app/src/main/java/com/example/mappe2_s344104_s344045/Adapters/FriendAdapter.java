@@ -1,11 +1,10 @@
-package com.example.mappe2_s344104_s344045;
+package com.example.mappe2_s344104_s344045.Adapters;
 
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -15,11 +14,14 @@ import android.widget.ArrayAdapter;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.ImageButton;
-import com.example.mappe2_s344104_s344045.Friend;
+
+import com.example.mappe2_s344104_s344045.Database.DatabaseClient;
+import com.example.mappe2_s344104_s344045.Models.Friend;
+import com.example.mappe2_s344104_s344045.R;
+import com.example.mappe2_s344104_s344045.Activities.RegisterFriend;
 
 import android.widget.PopupMenu;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;

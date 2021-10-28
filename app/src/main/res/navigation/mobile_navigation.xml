@@ -7,19 +7,19 @@
 
     <activity
         android:id="@+id/navigation_friends"
-        android:name="com.example.mappe2_s344104_s344045.ListFriends"
+        android:name="com.example.mappe2_s344104_s344045.Activities.ListFriends"
         android:label="Venner"
         tools:layout="@layout/activity_list" />
 
     <activity
         android:id="@+id/navigation_reservations"
-        android:name="com.example.mappe2_s344104_s344045.ListReservations"
+        android:name="com.example.mappe2_s344104_s344045.Activities.ListReservations"
         android:label="Reservasjoner"
         tools:layout="@layout/activity_list" />
 
     <activity
         android:id="@+id/navigation_restaurants"
-        android:name="com.example.mappe2_s344104_s344045.ListRestaurants"
+        android:name="com.example.mappe2_s344104_s344045.Activities.ListRestaurants"
         android:label="Restauranter"
         tools:layout="@layout/activity_list" />
 </navigation>

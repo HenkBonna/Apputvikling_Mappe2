@@ -1,4 +1,4 @@
-package com.example.mappe2_s344104_s344045;
+package com.example.mappe2_s344104_s344045.Activities;
 
 import android.Manifest;
 import android.app.AlarmManager;
@@ -17,6 +17,9 @@ import android.widget.TimePicker;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
+
+import com.example.mappe2_s344104_s344045.R;
+import com.example.mappe2_s344104_s344045.ServiceAndReceivers.PeriodicService;
 
 public class Settings extends AppCompatActivity {
     private SharedPreferences.Editor editor;

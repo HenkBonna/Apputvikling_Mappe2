@@ -1,21 +1,21 @@
-package com.example.mappe2_s344104_s344045;
+package com.example.mappe2_s344104_s344045.Activities;
 
 import android.content.Intent;
-import android.media.Image;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.ArrayAdapter;
-import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.mappe2_s344104_s344045.Adapters.RestaurantAdapter;
+import com.example.mappe2_s344104_s344045.Database.DatabaseClient;
+import com.example.mappe2_s344104_s344045.R;
+import com.example.mappe2_s344104_s344045.Models.Restaurant;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.navigation.NavigationBarView;

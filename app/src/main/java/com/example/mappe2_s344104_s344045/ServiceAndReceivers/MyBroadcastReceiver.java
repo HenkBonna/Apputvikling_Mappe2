@@ -1,10 +1,8 @@
-package com.example.mappe2_s344104_s344045;
+package com.example.mappe2_s344104_s344045.ServiceAndReceivers;
 
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
-import android.util.Log;
-import android.widget.Toast;
 
 public class MyBroadcastReceiver extends BroadcastReceiver {
     @Override

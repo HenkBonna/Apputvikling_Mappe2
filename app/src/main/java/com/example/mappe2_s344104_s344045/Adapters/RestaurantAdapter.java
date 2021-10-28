@@ -1,4 +1,4 @@
-package com.example.mappe2_s344104_s344045;
+package com.example.mappe2_s344104_s344045.Adapters;
 
 import android.app.Activity;
 import android.content.Context;
@@ -14,7 +14,11 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageButton;
 import android.widget.PopupMenu;
 import android.widget.TextView;
-import android.widget.Toast;
+
+import com.example.mappe2_s344104_s344045.Database.DatabaseClient;
+import com.example.mappe2_s344104_s344045.R;
+import com.example.mappe2_s344104_s344045.Activities.RegisterRestaurant;
+import com.example.mappe2_s344104_s344045.Models.Restaurant;
 
 import java.util.List;
 

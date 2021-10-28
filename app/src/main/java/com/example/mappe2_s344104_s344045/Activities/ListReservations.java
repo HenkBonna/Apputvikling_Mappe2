@@ -1,4 +1,4 @@
-package com.example.mappe2_s344104_s344045;
+package com.example.mappe2_s344104_s344045.Activities;
 
 import android.Manifest;
 import android.app.NotificationChannel;
@@ -20,6 +20,11 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 
+import com.example.mappe2_s344104_s344045.Adapters.ReservationAdapter;
+import com.example.mappe2_s344104_s344045.Database.DBHandler;
+import com.example.mappe2_s344104_s344045.Database.DatabaseClient;
+import com.example.mappe2_s344104_s344045.R;
+import com.example.mappe2_s344104_s344045.Models.Reservation;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.navigation.NavigationBarView;

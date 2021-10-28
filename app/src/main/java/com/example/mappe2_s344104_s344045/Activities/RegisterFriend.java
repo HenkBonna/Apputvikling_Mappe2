@@ -1,13 +1,16 @@
-package com.example.mappe2_s344104_s344045;
+package com.example.mappe2_s344104_s344045.Activities;
 
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.example.mappe2_s344104_s344045.Database.DatabaseClient;
+import com.example.mappe2_s344104_s344045.Models.Friend;
+import com.example.mappe2_s344104_s344045.R;
 
 public class RegisterFriend extends AppCompatActivity {
     EditText editFirstName, editLastName, editPhone;

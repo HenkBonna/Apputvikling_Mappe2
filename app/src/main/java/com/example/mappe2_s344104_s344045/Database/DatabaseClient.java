@@ -1,12 +1,8 @@
-package com.example.mappe2_s344104_s344045;
+package com.example.mappe2_s344104_s344045.Database;
 
 import android.content.Context;
 
-import androidx.annotation.NonNull;
 import androidx.room.Room;
-import androidx.room.RoomDatabase;
-import androidx.room.migration.Migration;
-import androidx.sqlite.db.SupportSQLiteDatabase;
 
 public class DatabaseClient {
     private Context mCtx;
