@@ -3,36 +3,27 @@ package com.example.mappe2_s344104_s344045;
 import android.Manifest;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
-import android.content.BroadcastReceiver;
-import android.content.Context;
 import android.content.Intent;
-import android.content.IntentFilter;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.ArrayAdapter;
 import android.widget.ImageButton;
 import android.widget.ListView;
-import android.widget.TableLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
-import androidx.room.ColumnInfo;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.navigation.NavigationBarView;
 
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
 import java.util.List;
 
 public class ListReservations extends AppCompatActivity {
@@ -102,7 +93,7 @@ public class ListReservations extends AppCompatActivity {
             public void onClick(View view) {
                 //saveFriend();
                 //showFriends();
-                Intent i = new Intent(view.getContext(), AddReservation.class); //TODO: Undo this thingy
+                Intent i = new Intent(view.getContext(), RegisterReservation.class); //TODO: Undo this thingy
                 startActivity(i);
             }
         });

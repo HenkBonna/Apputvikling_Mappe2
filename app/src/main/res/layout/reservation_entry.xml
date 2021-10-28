@@ -12,6 +12,7 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
         android:gravity="center"
+        android:layout_marginStart="4dp"
         android:text="Restaurant"
         android:textSize="16sp"
         android:textStyle="bold" />

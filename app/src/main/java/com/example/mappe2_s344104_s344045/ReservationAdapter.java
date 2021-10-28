@@ -5,7 +5,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.os.Parcelable;
 import android.view.LayoutInflater;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -76,7 +75,7 @@ public class ReservationAdapter extends ArrayAdapter<Reservation> {
                     public boolean onMenuItemClick(MenuItem menuItem) {
                         switch (menuItem.getItemId()){
                             case R.id.edit_entry:
-                                Intent i = new Intent(context, AddReservation.class);
+                                Intent i = new Intent(context, RegisterReservation.class);
                                 Bundle bundle = new Bundle();
                                 bundle.putLong("reservation_ID", reservation.get_ID());
                                 i.putExtras(bundle);
