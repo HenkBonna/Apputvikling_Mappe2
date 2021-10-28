@@ -32,7 +32,7 @@ public class Settings extends AppCompatActivity {
         setContentView(R.layout.activity_settings);
 
         //getting shared preferences and an editor
-        settings = getSharedPreferences(MainActivity.PREFS, MODE_PRIVATE);
+        settings = getSharedPreferences(ListReservations.PREFS, MODE_PRIVATE);
         editor = settings.edit();
         alarmManager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
 

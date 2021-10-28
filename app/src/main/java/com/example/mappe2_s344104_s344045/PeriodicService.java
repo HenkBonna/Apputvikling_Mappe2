@@ -41,8 +41,7 @@ public class PeriodicService extends Service {
     public void onCreate(){
         super.onCreate();
 
-        Log.v("TAG", "Started service");
-        settings = getSharedPreferences(MainActivity.PREFS, MODE_PRIVATE);
+        settings = getSharedPreferences(ListReservations.PREFS, MODE_PRIVATE);
         Intent i = new Intent(this, MyService.class);
         pi = PendingIntent.getService(this, 0, i, 0);
         alarmManager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
@@ -73,10 +72,8 @@ public class PeriodicService extends Service {
             cal.set(Calendar.SECOND, 0);
             cal.set(Calendar.MILLISECOND, 0);
 
-            Log.e("Alarm start", "" + cal.getTime());
             if (cal.getTimeInMillis() < System.currentTimeMillis()) {
                 cal.set(Calendar.DAY_OF_MONTH, cal.get(Calendar.DAY_OF_MONTH) + 1);
-                Log.e("New alarm start", "" + cal.getTime());
             }
             alarmManager.setInexactRepeating(AlarmManager.RTC_WAKEUP, cal.getTimeInMillis(), AlarmManager.INTERVAL_DAY, pi);
         }

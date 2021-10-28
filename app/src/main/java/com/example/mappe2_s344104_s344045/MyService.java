@@ -28,7 +28,7 @@ public class MyService extends Service {
     @Override
     public void onCreate(){
         super.onCreate();
-        settings = getSharedPreferences(MainActivity.PREFS, MODE_PRIVATE);
+        settings = getSharedPreferences(ListReservations.PREFS, MODE_PRIVATE);
     }
     @Nullable
     @Override
@@ -64,9 +64,6 @@ public class MyService extends Service {
                         .reservationDao()
                         .getAll();
 
-                for (Reservation r : reservations){
-                    Log.e("RESERVASJON", r.toString());
-                }
                 Calendar cal = Calendar.getInstance();
                 SimpleDateFormat dateFormat = new SimpleDateFormat("dd.MM.yyyy");
                 String today = dateFormat.format(cal.getTime());
@@ -94,9 +91,7 @@ public class MyService extends Service {
                             FriendsList friendsList = r.getFriends();
                             List<Friend> friends = friendsList.getFriends();
 
-                            Log.e("MESSAGE", message);
                             for (Friend f : friends) {
-                                Log.e("VENN", f.toString());
                                 String number = f.getPhone();
                                 smsManager.sendTextMessage(number,
                                         null,

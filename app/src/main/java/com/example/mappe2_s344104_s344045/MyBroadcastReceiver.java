@@ -9,12 +9,7 @@ import android.widget.Toast;
 public class MyBroadcastReceiver extends BroadcastReceiver {
     @Override
     public void onReceive(Context context, Intent intent){
-        Log.e("TAG", "Broadcast received");
         context.stopService(new Intent(context, PeriodicService.class));
         context.startService(new Intent(context, PeriodicService.class));
-    }
-
-    public MyBroadcastReceiver(){
-        Log.e("BROADCASTRECEIVER", "BroadcastReceiver constructor called");
     }
 }
