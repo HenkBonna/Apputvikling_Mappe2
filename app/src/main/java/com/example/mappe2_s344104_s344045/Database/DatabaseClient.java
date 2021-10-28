@@ -4,6 +4,8 @@ import android.content.Context;
 
 import androidx.room.Room;
 
+import java.io.File;
+
 public class DatabaseClient {
     private Context mCtx;
     private static DatabaseClient mInstance;
@@ -12,7 +14,9 @@ public class DatabaseClient {
     private DatabaseClient(Context mCtx){
         this.mCtx = mCtx;
         appDatabase = Room.databaseBuilder(mCtx.getApplicationContext(), AppDatabase.class, "MyFriends")
-                .fallbackToDestructiveMigration().build();
+                .fallbackToDestructiveMigration()
+                .createFromFile(new File("mypath"))
+                .build();
     }
 
     public static synchronized DatabaseClient getInstance(Context mCtx){
