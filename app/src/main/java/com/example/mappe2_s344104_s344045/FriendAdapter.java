@@ -29,6 +29,7 @@ public class FriendAdapter extends ArrayAdapter<Friend> {
     private int layoutResourceId;
     private List<Friend> friendList;
     private List<Friend> checkedFriends;
+    MenuInflater menuInflater;
 
     public FriendAdapter(Context context, int layoutResourceId, List<Friend> friendList){
         super(context, layoutResourceId, friendList);
@@ -88,7 +89,10 @@ public class FriendAdapter extends ArrayAdapter<Friend> {
             holder.button_edit.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    MenuInflater menuInflater = finalHolder.popup.getMenuInflater();
+                    if (menuInflater == null) {
+                        menuInflater = finalHolder.popup.getMenuInflater();
+                    }
+                    finalHolder.popup.getMenu().clear();
                     menuInflater.inflate(R.menu.list_menu, finalHolder.popup.getMenu());
                     finalHolder.popup.show();
                     finalHolder.popup.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
