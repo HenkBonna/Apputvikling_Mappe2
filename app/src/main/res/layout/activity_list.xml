@@ -43,6 +43,7 @@
             android:id="@+id/listView"
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
+            android:layout_marginBottom="90dp"
             android:divider="@color/lightergray"
             android:dividerHeight="1dp"
             android:footerDividersEnabled="false"

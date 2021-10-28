@@ -31,8 +31,6 @@ public class ListRestaurants extends AppCompatActivity {
 
     RestaurantAdapter adapter;
 
-    private boolean findABetterWayOfCheckingThis = false;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
