@@ -22,6 +22,7 @@ import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 import java.util.TimeZone;
+import java.util.concurrent.ExecutionException;
 
 public class MyService extends Service {
     SharedPreferences settings;
@@ -38,16 +39,16 @@ public class MyService extends Service {
 
     @Override
     public int onStartCommand(Intent intent, int flags, int startId){
-        checkReservations();
+        String message = checkReservations();
 
         //Toast.makeText(getApplicationContext(), "I MinService", Toast.LENGTH_SHORT).show();
         NotificationManager notificationManager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
         Intent i = new Intent(this, ListReservations.class);
         PendingIntent pendingIntent = PendingIntent.getActivity(this, 0, i, 0);
         Notification notification = new NotificationCompat.Builder(this,"22")
-                .setContentTitle("MinNotifikasjon")
-                .setContentText("Tekst")
-                .setSmallIcon(R.mipmap.ic_launcher)
+                .setContentTitle("Reservasjon!")
+                .setContentText(message)
+                .setSmallIcon(R.mipmap.restaurant)
                 .setContentIntent(pendingIntent)
                 .build();
         notification.flags |= Notification.FLAG_AUTO_CANCEL;
@@ -55,10 +56,11 @@ public class MyService extends Service {
 
         return super.onStartCommand(intent, flags, startId);
     }
-    public void checkReservations(){
-        class CheckReservations extends AsyncTask<Void, Void, Void>{
+    public String checkReservations(){
+        class CheckReservations extends AsyncTask<Void, Void, String>{
+            String message;
             @Override
-            protected Void doInBackground(Void... voids){
+            protected String doInBackground(Void... voids){
                 SmsManager smsManager = SmsManager.getDefault();
                 List<Reservation> reservations = DatabaseClient.getInstance(getApplicationContext()).getAppDatabase()
                         .reservationDao()
@@ -85,7 +87,7 @@ public class MyService extends Service {
                     } else {
                         //Checking if the reservation date matches the current date
                         if (r.getDate().equals(today)){
-                            String message = settings.getString("standard_message",
+                            message = settings.getString("standard_message",
                                     "Husk reservasjon i kveld! ") + " "
                                     + r.getRestaurant() + " kl " + r.getTime();
                             FriendsList friendsList = r.getFriends();
@@ -104,11 +106,20 @@ public class MyService extends Service {
                     }
                 }
 
-                return null;
+                return message;
             }
         }
         CheckReservations cr = new CheckReservations();
-        cr.execute();
+        AsyncTask<Void, Void, String> task = cr.execute();
+        String message = null;
+        try {
+            message = task.get();
+        } catch (ExecutionException e) {
+            e.printStackTrace();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        return message;
     }
 
     private void deleteReservation(Reservation r) {

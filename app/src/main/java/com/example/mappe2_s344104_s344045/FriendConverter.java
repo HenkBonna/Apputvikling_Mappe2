@@ -24,9 +24,9 @@ public class FriendConverter {
                 id = null;
             }
             if (id != null) {
-                String fName = "", lName, phone;
-                for (int i = 0; i < friendData.size() -2; i++){
-                        fName += friendData.get(i);
+                String fName = friendData.get(1), lName, phone;
+                for (int i = 2; i < friendData.size() -2; i++){
+                        fName += " " +friendData.get(i);
                 }
                 lName = friendData.get(friendData.size()-2);
                 phone = friendData.get(friendData.size()-1);
