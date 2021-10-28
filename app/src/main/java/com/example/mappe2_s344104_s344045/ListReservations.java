@@ -69,11 +69,6 @@ public class ListReservations extends AppCompatActivity {
 
         textView.setText("Reservasjoner");
 
-        // TODO: Replace with reading from _db
-        // FILL with Tables
-        //String[] temp = {"Reservasjon 1","Reservasjon 2"};
-        // TODO: Look into ArrayAdapters, to create better-looking listitems: vogella.com/tutorials/AndroidListView/article.html
-
         nav.setSelectedItemId(R.id.navigation_reservations);
 
         nav.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {

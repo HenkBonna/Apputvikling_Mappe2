@@ -1,107 +1,121 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical">
 
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:gravity="center_horizontal"
-        android:text="Reserver bord"
-        android:textColor="@color/black"
-        android:textSize="34sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+    <ScrollView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content">
 
-    <TextView
-        android:id="@+id/label_restaurant"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:text="Restaurant"
-        android:textColor="@color/black"
-        android:textSize="20sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView" />
-
-    <Spinner
-        android:id="@+id/spinner_restaurant"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:minHeight="48dp"
-        android:gravity="center_horizontal"
-        android:spinnerMode="dropdown"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/label_restaurant"
-        tools:ignore="SpeakableTextPresentCheck" />
-
-    <DatePicker
-        android:id="@+id/datePicker"
-        android:layout_width="wrap_content"
-        android:layout_height="100dp"
-        android:calendarViewShown="false"
-        android:datePickerMode="spinner"
-        app:layout_constraintEnd_toEndOf="@+id/dateButton"
-        app:layout_constraintStart_toStartOf="@+id/dateButton"
-        app:layout_constraintTop_toBottomOf="@+id/dateButton" />
-
-    <TimePicker
-        android:id="@+id/reservationDate"
-        android:layout_width="wrap_content"
-        android:layout_height="120dp"
-        android:timePickerMode="spinner"
-        android:visibility="invisible"
-        app:layout_constraintEnd_toEndOf="@+id/dateButton"
-        app:layout_constraintStart_toStartOf="@+id/dateButton"
-        app:layout_constraintTop_toBottomOf="@+id/dateButton" />
-
-    <TextView
-        android:id="@+id/label_friends"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Venner"
-        android:textColor="@color/black"
-        android:textSize="20sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/reservationDate" />
-
-    <ListView
-        android:id="@+id/list_of_friends"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="100dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/label_friends">
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
-    </ListView>
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:gravity="center_horizontal"
+            android:text="Reserver bord"
+            android:textSize="34sp" />
 
-    <Button
-        android:id="@+id/save_reservation"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:onClick="saveReservation"
-        android:text="Lagre reservasjon"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.512"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/list_of_friends"
-        app:layout_constraintWidth_percent="0.7" />
+        <TextView
+            android:id="@+id/label_restaurant"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="Restaurant"
+            android:textAlignment="center"
+            android:textColor="@color/black"
+            android:textSize="20sp" />
 
-    <Button
-        android:id="@+id/dateButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:onClick="switchPicker"
-        android:text="Dato/Tid"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/spinner_restaurant" />
+        <Spinner
+            android:id="@+id/spinner_restaurant"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:minHeight="48dp"
+            android:spinnerMode="dropdown" />
 
+        <Button
+            android:id="@+id/add_restaurant_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:backgroundTint="#3F51B5"
+            android:text="+ Legg til ny restaurant"
+            android:textAlignment="center" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="Dato og Klokkeslett"
+            android:textAlignment="center"
+            android:textColor="@color/black"
+            android:textSize="20sp" />
+
+        <!--<Button
+            android:id="@+id/dateButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="switchPicker"
+            android:layout_gravity="center"
+            android:text="Dato/Tid" />-->
+
+        <DatePicker
+            android:id="@+id/datePicker"
+            android:layout_width="fill_parent"
+            android:layout_height="100dp"
+            android:calendarViewShown="false"
+            android:datePickerMode="spinner" />
+
+        <TimePicker
+            android:id="@+id/reservationDate"
+            android:layout_width="fill_parent"
+            android:layout_height="120dp"
+            android:timePickerMode="spinner"
+            android:visibility="visible" />
+
+        <TextView
+            android:id="@+id/label_friends"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="Venner"
+            android:textAlignment="center"
+            android:textColor="@color/black"
+            android:textSize="20sp" />
+
+        <ListView
+            android:id="@+id/list_of_friends"
+            android:layout_width="match_parent"
+            android:layout_height="100dp">
+
+        </ListView>
+
+        <Button
+            android:id="@+id/add_friend_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:backgroundTint="#3F51B5"
+            android:layout_gravity="center"
+            android:text="+ Legg til ny venn" />
+
+        <Button
+            android:id="@+id/save_reservation"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="saveReservation"
+            android:layout_gravity="center"
+            android:text="Lagre reservasjon" />
+
+    </LinearLayout>
+
+    </ScrollView>
+
+</FrameLayout>
