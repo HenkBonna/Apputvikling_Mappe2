@@ -19,8 +19,6 @@ public class PeriodicService extends Service {
     private static long prefHour;
     private static long prefMinute;
 
-
-
     @Override
     public IBinder onBind (Intent arg0){
         return null;

@@ -45,7 +45,6 @@ public class MyService extends Service {
         String message = settings.getString("standard_message",
                 "Husk reservasjon i kveld! ");
 
-        //Toast.makeText(getApplicationContext(), "I MinService", Toast.LENGTH_SHORT).show();
         if (message != null) {
             NotificationManager notificationManager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
             Intent i = new Intent(this, ListReservations.class);

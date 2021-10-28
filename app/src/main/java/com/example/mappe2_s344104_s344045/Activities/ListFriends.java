@@ -54,9 +54,6 @@ public class ListFriends extends AppCompatActivity {
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 switch (item.getTitle().toString()){
                     case "Venner":
-                        //Intent i = new Intent(ListFriends.this, ListFriends.class);
-                        //startActivity(i);
-                        //finish();
                         break;
                     case "Reservasjoner":
                         Intent i2 = new Intent(ListFriends.this, ListReservations.class);
@@ -109,15 +106,6 @@ public class ListFriends extends AppCompatActivity {
             @Override
             protected void onPostExecute(List<Friend> allFriends){
                 super.onPostExecute(allFriends);
-
-                // REDUNDANT //////
-                String out="";
-                for (Friend f : allFriends){
-                    out = f.getFirstname() + " " + f.getLastname() + " (" + f.getPhone() + ")";
-                }
-                //textView.setText(out);
-                System.out.println("RESULTAT: "+ out);
-                //////////////////
                 displayFriends(allFriends);
             }
         }
