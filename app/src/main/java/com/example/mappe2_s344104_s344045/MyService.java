@@ -64,6 +64,9 @@ public class MyService extends Service {
                         .reservationDao()
                         .getAll();
 
+                for (Reservation r : reservations){
+                    Log.e("RESERVASJON", r.toString());
+                }
                 Calendar cal = Calendar.getInstance();
                 SimpleDateFormat dateFormat = new SimpleDateFormat("dd.MM.yyyy");
                 String today = dateFormat.format(cal.getTime());
@@ -93,6 +96,7 @@ public class MyService extends Service {
 
                             Log.e("MESSAGE", message);
                             for (Friend f : friends) {
+                                Log.e("VENN", f.toString());
                                 String number = f.getPhone();
                                 smsManager.sendTextMessage(number,
                                         null,
